@@ -1,0 +1,514 @@
+---
+import navData from "@data/navData.json";
+import { Icon } from "astro-icon/components";
+
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"header"> {}
+
+const props = Astro.props as Props;
+---
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+</style>
+
+<header
+  id="cs-navigation"
+  class="sticky z-10000 w-full bg-primary px-4 py-3 shadow-[rgba(149,157,165,0.2)_0px_8px_24px] backdrop-blur-[30px] lg:px-4 lg:py-0"
+  style="font-family: 'Poppins', sans-serif;"
+  {...props}
+>
+  <div
+    class="cs-container mx-auto flex max-w-7xl items-center justify-end gap-0 md:gap-6 lg:justify-start"
+  >
+    <!-- Logo -->
+    <a
+      href="/"
+      class="cs-logo mr-auto flex h-full items-center"
+      aria-label="back to home"
+    >
+      <span
+        class="font-bebas text-[20px] font-semibold tracking-wide text-primary-foreground uppercase select-none lg:text-[1.875rem]"
+      >
+        LEIVA ASSISTANTS
+      </span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="cs-nav flex items-center gap-3 lg:gap-4" role="navigation">
+      <!-- Mobile Nav Toggle -->
+      <button
+        class="cs-toggle order-2 ml-auto flex h-11 w-11 items-center justify-center rounded border-none bg-transparent lg:order-1 lg:hidden"
+        id="mobile-menu-toggle"
+        aria-expanded="false"
+        aria-controls="cs-expanded-ul"
+        aria-label="Toggle mobile menu."
+      >
+        <div class="cs-box relative h-3.5 w-6" aria-hidden="true">
+          <span class="cs-line cs-line1 absolute left-1/2 -translate-x-1/2"
+          ></span>
+          <span class="cs-line cs-line2 absolute left-1/2 -translate-x-1/2"
+          ></span>
+          <span class="cs-line cs-line3 absolute left-1/2 -translate-x-1/2"
+          ></span>
+        </div>
+      </button>
+
+      <!-- Navigation Items -->
+      <!-- overflow-hidden -->
+      <div
+        class:list={[
+          "cs-ul-wrapper fixed top-full right-0 h-screen bg-primary shadow-[inset_rgba(0,0,0,0.2)_0px_8px_24px]",
+          "lg:visible lg:relative lg:top-0 lg:h-auto lg:transform-none lg:bg-transparent lg:opacity-100 lg:shadow-none",
+        ]}
+      >
+        <ul
+          id="cs-expanded-ul"
+          class="cs-ul m-0 flex h-[65vh] w-auto min-w-[40%] flex-col items-end justify-start gap-5 overflow-scroll pt-12 pr-10 pb-8 pl-[4.375rem] lg:h-auto lg:w-full lg:flex-row lg:items-center lg:justify-start lg:gap-6 lg:overflow-visible lg:p-0"
+        >
+          {
+            navData.map((entry) => (
+              <li
+                class:list={[
+                  "cs-li group w-full text-right opacity-0 lg:w-auto lg:flex-none lg:list-none lg:py-7 lg:text-left lg:opacity-100",
+                  { "cs-dropdown relative": entry.children?.length > 0 },
+                ]}
+              >
+                {entry.children?.length > 0 ? (
+                  <div class="relative block lg:contents">
+                    <a
+                      href={entry.url}
+                      class:list={[
+                        "cs-li-link relative inline-block rounded-full bg-primary py-1 pr-8 pl-2 font-roboto text-base leading-tight text-primary-foreground no-underline transition-colors",
+                        "lg:block lg:px-2 before:lg:block",
+                        "before:absolute before:bottom-0.5 before:left-0 before:hidden before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-accent before:opacity-100 before:transition-transform before:duration-300",
+                        "group-hover:before:scale-x-100 hover:before:scale-x-100",
+                        {
+                          "cs-active bg-orange-200 text-gray-50":
+                            Astro.url.pathname === entry.url,
+                        },
+                      ]}
+                      aria-current={
+                        Astro.url.pathname === entry.url ? "page" : undefined
+                      }
+                    >
+                      {entry.key}
+                    </a>
+                    <button
+                      aria-expanded="false"
+                      aria-controls={`submenu-${entry.key}`}
+                      class:list={[
+                        "submenu-btn absolute top-1/2 right-0 z-10 block h-full -translate-y-1/2 rounded-full rounded-tl-none rounded-bl-none bg-accent px-1 py-1 text-accent-foreground transition-colors hover:bg-orange-100 lg:hidden",
+                        { "cs-active": Astro.url.pathname.includes(entry.url) },
+                      ]}
+                    >
+                      <span class="down-icon">
+                        <Icon name="tabler:chevron-down:" />
+                      </span>
+                      <span class="up-icon hidden">
+                        <Icon name="tabler:chevron-up" />
+                      </span>
+                    </button>
+                  </div>
+                ) : (
+                  <a
+                    href={entry.url}
+                    class:list={[
+                      "cs-li-link relative inline-block overflow-clip rounded-full bg-primary px-2 py-1 font-roboto text-base leading-tight text-primary-foreground no-underline transition-colors",
+                      "lg:block",
+                      "before:absolute before:bottom-0.5 before:left-0 before:block before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-accent before:opacity-100 before:transition-transform before:duration-300",
+                      "hover:before:scale-x-100",
+                      {
+                        "cs-active bg-orange-200 text-gray-50":
+                          Astro.url.pathname === entry.url,
+                      },
+                    ]}
+                    aria-current={
+                      Astro.url.pathname === entry.url ? "page" : undefined
+                    }
+                  >
+                    {entry.key}
+                  </a>
+                )}
+
+                {entry.children?.length > 0 && (
+                  <ul
+                    id={`submenu-${entry.key}`}
+                    class:list={[
+                      "cs-drop-ul m-0 flex flex-col items-end justify-start gap-3 overflow-hidden border border-accent-secondary bg-accent px-6 py-0",
+                      "lg:absolute lg:top-full lg:m-0 lg:min-w-50 lg:border-x-0 lg:border-t-0 lg:border-b-[#5A766A] lg:bg-primary lg:p-0 lg:shadow-[rgba(149,157,165,0.2)_0px_10px_16px]",
+                      "invisible h-0 opacity-0 lg:z-[-100] lg:border-b-0",
+                      "group-hover:visible group-hover:h-auto group-hover:opacity-100 group-hover:lg:z-100 group-hover:lg:border-b-[5px]",
+                    ]}
+                  >
+                    {entry.children.map((child) => (
+                      <li class="cs-drop-li h-auto w-full list-none opacity-0 lg:block lg:text-base lg:no-underline">
+                        <a
+                          href={child.url}
+                          class:list={[
+                            "cs-li-link cs-drop-link font-roboto text-sm leading-tight whitespace-nowrap text-accent-foreground transition-colors",
+                            "hover:bg-primary-foreground lg:box-border lg:block lg:w-full lg:p-3 lg:text-base lg:leading-normal lg:text-primary-foreground lg:duration-500 lg:hover:text-primary",
+                          ]}
+                          aria-current={
+                            Astro.url.pathname === child.url
+                              ? "page"
+                              : undefined
+                          }
+                        >
+                          {child.key}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <a
+        href="#"
+        class:list={[
+          "relative inline-block overflow-clip rounded-lg bg-primary px-2 py-4 font-roboto text-base leading-tight font-bold whitespace-nowrap text-accent-foreground uppercase no-underline transition-colors",
+          "before:absolute before:inset-0 before:bg-accent before:transition-transform before:duration-300 before:ease-out hover:before:translate-x-[105%]",
+          "lg:px-8",
+        ]}
+        aria-current="page"
+      >
+        <span class="relative z-100">Hire Now</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target instanceof Element && target.closest(".submenu-btn")) {
+      e.stopPropagation();
+    }
+  });
+
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const navigation = document.getElementById("cs-navigation");
+  const body = document.body;
+
+  mobileToggle?.addEventListener("click", () => {
+    const isActive = navigation?.classList.toggle("cs-active");
+    mobileToggle.setAttribute("aria-expanded", isActive ? "true" : "false");
+    if (isActive) {
+      body.classList.add("cs-open");
+    } else {
+      body.classList.remove("cs-open");
+    }
+  });
+
+  // Mobile dropdown toggles
+  document.querySelectorAll(".submenu-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const parent = btn.closest(".cs-dropdown");
+      const isActive = parent?.classList.toggle("cs-active");
+      btn.setAttribute("aria-expanded", isActive ? "true" : "false");
+    });
+  });
+</script>
+
+<style>
+  /* Body overflow when mobile menu is open */
+  body.cs-open {
+    overflow: hidden;
+  }
+
+  /* Mobile Navigation Active States */
+  @media only screen and (max-width: 63.9375rem) {
+    #cs-navigation::before {
+      content: "";
+      width: 0%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      display: block;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: -11;
+      transition:
+        width 0.5s,
+        opacity 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    #cs-navigation.cs-active::before {
+      width: 100%;
+      opacity: 1;
+    }
+
+    #cs-navigation.cs-active .cs-ul-wrapper {
+      opacity: 1;
+      visibility: visible;
+      transform: scaleX(1);
+      transition-delay: 0.2s;
+    }
+
+    #cs-navigation.cs-active .cs-li {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Hamburger Animation */
+    #cs-navigation .cs-line {
+      width: 100%;
+      height: 2px;
+      background-color: #1a1a1a;
+      border-radius: 2px;
+      transition:
+        transform 0.5s,
+        top 0.3s,
+        left 0.3s,
+        bottom 0.3s,
+        opacity 0.3s;
+    }
+
+    #cs-navigation .cs-line1 {
+      top: 0;
+    }
+
+    #cs-navigation .cs-line2 {
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    #cs-navigation .cs-line3 {
+      bottom: 0;
+    }
+
+    #cs-navigation.cs-active .cs-line1 {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(225deg);
+    }
+
+    #cs-navigation.cs-active .cs-line2 {
+      top: 50%;
+      transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+      transform-origin: center;
+    }
+
+    #cs-navigation.cs-active .cs-line3 {
+      opacity: 0;
+      bottom: 100%;
+    }
+
+    /* Mobile ul wrapper transitions */
+    .cs-ul-wrapper {
+      transform: scaleX(0);
+      transform-origin: top right;
+      transition:
+        transform 0.4s,
+        opacity 0.3s;
+    }
+
+    /* Staggered animation for mobile menu items */
+    .cs-li {
+      transform: translateX(-2.5rem);
+      transition:
+        transform 0.6s,
+        opacity 0.9s;
+    }
+
+    .cs-li:nth-of-type(1) {
+      transition-delay: 0.05s;
+    }
+    .cs-li:nth-of-type(2) {
+      transition-delay: 0.1s;
+    }
+    .cs-li:nth-of-type(3) {
+      transition-delay: 0.15s;
+    }
+    .cs-li:nth-of-type(4) {
+      transition-delay: 0.2s;
+    }
+    .cs-li:nth-of-type(5) {
+      transition-delay: 0.25s;
+    }
+    .cs-li:nth-of-type(6) {
+      transition-delay: 0.3s;
+    }
+    .cs-li:nth-of-type(7) {
+      transition-delay: 0.35s;
+    }
+    .cs-li:nth-of-type(8) {
+      transition-delay: 0.4s;
+    }
+    .cs-li:nth-of-type(9) {
+      transition-delay: 0.45s;
+    }
+
+    /* Mobile dropdown */
+    .cs-dropdown.cs-active .submenu-btn .down-icon {
+      display: none;
+    }
+
+    .cs-dropdown.cs-active .submenu-btn .up-icon {
+      display: inline;
+    }
+
+    .cs-dropdown.cs-active .cs-drop-ul {
+      height: auto;
+      margin: 0.75rem 0 0 0;
+      padding: 1.5rem;
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .cs-dropdown.cs-active .cs-drop-li {
+      opacity: 1;
+    }
+
+    .cs-drop-ul {
+      transform: scale(0);
+      transform-origin: top right;
+      transition:
+        padding 0.3s,
+        margin 0.3s,
+        height 0.3s,
+        opacity 0.3s,
+        transform 0.3s,
+        visibility 0.3s;
+    }
+  }
+
+  /* Desktop Navigation */
+  @media only screen and (min-width: 64rem) {
+    /* Desktop dropdown hover */
+    .cs-dropdown:hover .cs-drop-ul,
+    .cs-dropdown.cs-active .cs-drop-ul {
+      opacity: 1;
+      visibility: visible;
+      transform: scaleY(1);
+    }
+
+    .cs-dropdown:hover .cs-drop-li,
+    .cs-dropdown.cs-active .cs-drop-li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cs-drop-ul {
+      transform: scaleY(0);
+      transform-origin: top;
+      transition:
+        transform 0.3s,
+        visibility 0.3s,
+        opacity 0.3s;
+    }
+
+    .cs-drop-li {
+      transform: translateY(-0.625rem);
+      transition:
+        opacity 0.6s,
+        transform 0.6s;
+    }
+
+    /* Staggered animation for dropdown items */
+    .cs-drop-li:nth-of-type(1) {
+      transition-delay: 0.05s;
+    }
+    .cs-drop-li:nth-of-type(2) {
+      transition-delay: 0.1s;
+    }
+    .cs-drop-li:nth-of-type(3) {
+      transition-delay: 0.15s;
+    }
+    .cs-drop-li:nth-of-type(4) {
+      transition-delay: 0.2s;
+    }
+    .cs-drop-li:nth-of-type(5) {
+      transition-delay: 0.25s;
+    }
+    .cs-drop-li:nth-of-type(6) {
+      transition-delay: 0.3s;
+    }
+    .cs-drop-li:nth-of-type(7) {
+      transition-delay: 0.35s;
+    }
+    .cs-drop-li:nth-of-type(8) {
+      transition-delay: 0.4s;
+    }
+    .cs-drop-li:nth-of-type(9) {
+      transition-delay: 0.45s;
+    }
+    .cs-drop-li:nth-of-type(10) {
+      transition-delay: 0.5s;
+    }
+    .cs-drop-li:nth-of-type(11) {
+      transition-delay: 0.55s;
+    }
+    .cs-drop-li:nth-of-type(12) {
+      transition-delay: 0.6s;
+    }
+    .cs-drop-li:nth-of-type(13) {
+      transition-delay: 0.65s;
+    }
+
+    /* Focus styles */
+    .cs-drop-link:focus-within {
+      outline: 2px solid currentColor;
+      outline-offset: -2px;
+    }
+  }
+
+  /* Dark Mode Styles */
+  @media only screen and (max-width: 63.9375rem) {
+    body.dark-mode #cs-navigation .cs-logo {
+      filter: grayscale(1) brightness(1000%);
+    }
+
+    body.dark-mode #cs-navigation .cs-line {
+      background-color: #fff;
+    }
+
+    body.dark-mode #cs-navigation .cs-ul-wrapper {
+      background-color: var(--medium);
+    }
+
+    body.dark-mode #cs-navigation .cs-li-link {
+      color: var(--bodyTextColorWhite);
+    }
+  }
+
+  @media only screen and (min-width: 64rem) {
+    body.dark-mode #cs-navigation .cs-logo {
+      filter: grayscale(1) brightness(1000%);
+    }
+
+    body.dark-mode #cs-navigation .cs-li-link {
+      color: var(--bodyTextColorWhite);
+    }
+
+    body.dark-mode #cs-navigation .cs-drop-ul {
+      background-color: var(--dark);
+    }
+
+    body.dark-mode #cs-navigation .cs-drop-link:hover {
+      background-color: var(--medium);
+    }
+
+    body.dark-mode #cs-navigation .cs-drop-icon {
+      filter: grayscale(1) brightness(1000%);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+[
+  {
+    "key": "Home",
+    "url": "/",
+    "children": []
+  },
+  {
+    "key": "Services",
+    "url": "/services/",
+    "children": [
+      {
+        "key": "Executive Assistant",
+        "url": "/services/executive-assistant"
+      },
+      {
+        "key": "Customer Support Assistant",
+        "url": "/services/customer-support-assistant"
+      },
+      {
+        "key": "Social Media Manager",
+        "url": "/services/social-media-manager"
+      },
+      {
+        "key": "Virtual Assistant",
+        "url": "/services/virtual-assistant"
+      },
+      {
+        "key": "Administrative Assistant",
+        "url": "/services/administrative-assistant"
+      },
+      {
+        "key": "Real Estate Assistant",
+        "url": "/services/real-estate-assistant"
+      }
+    ]
+  },
+  {
+    "key": "How It Works",
+    "url": "/how-it-works/",
+    "children": []
+  }
+]
