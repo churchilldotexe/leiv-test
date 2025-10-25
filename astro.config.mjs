@@ -14,7 +14,4 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [sitemap(), icon()],
-  image:{
-    service: passthroughImageService()
-  }
 });
