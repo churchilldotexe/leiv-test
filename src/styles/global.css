@@ -42,6 +42,7 @@
 @theme {
   --color-primary: #040404;
   --color-primary-foreground: #FFFFFF;
+  --color-secondary: #404040;
   --color-accent: #E329B0;
   --color-accent-foreground:  #FFFFFF;
   --color-accent-secondary: #92038B;
