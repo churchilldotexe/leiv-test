@@ -21,9 +21,10 @@ const { cards: logos } = Astro.props;
 const duplicatedLogos = [...logos, ...logos];
 ---
 
-<section class="bg-background relative overflow-hidden py-12 md:py-16 lg:pt-32 lg:pb-22">
+<section class="z-1 bg-background relative overflow-hidden py-12 md:py-16 lg:pt-32 lg:pb-22">
   <div class="relative w-full min-h-81">
-    <div class="carousel-track" data-carousel-track>
+
+    <div class="flex gap-16 will-change-transform" data-carousel-track>
       {
         duplicatedLogos.map((logo, index) => {
           const blurStyle = getBlurStyle(logo.blurSrc.src);
@@ -160,12 +161,6 @@ const duplicatedLogos = [...logos, ...logos];
 </script>
 
 <style>
-
-  .carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    will-change: transform;
-  }
 
   .carousel-card {
     flex-shrink: 0;
