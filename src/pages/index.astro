@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
+import ApplicationLogosCarousel from "@components/ApplicationLogosCarousel.astro";
+import { Icon } from "astro-icon/components";
+
 import heroBg from "@assets/images/bg/hero-bg.png";
 import heroBlur from "@assets/images/bg/hero-bg-blur.webp";
 
@@ -34,18 +37,6 @@ import tds from "@assets/images/client-logos/tds.png";
 import tdsBlur from "@assets/images/client-logos/tds-blur.png";
 import treethebarberLogo from "@assets/images/client-logos/treethebarber-logo.jpg";
 import treethebarberLogoBlur from "@assets/images/client-logos/treethebarber-logo-blur.jpg";
-
-import asanaLogo from "@assets/icons/applications-logos/asana_logo.svg";
-import clickupLogo from "@assets/icons/applications-logos/clickup.svg";
-import googleCalendarIcon from "@assets/icons/applications-logos/google_calendar_icon.svg";
-import googleWorkspaceLogo from "@assets/icons/applications-logos/google_workspace_logo.svg";
-import metaPlatformsLogo from "@assets/icons/applications-logos/meta_platforms_inc_logo.svg";
-import microsoftTeamsLogo from "@assets/icons/applications-logos/microsoft_office_teams.svg";
-import mondayLogo from "@assets/icons/applications-logos/monday_logo.svg";
-import notionLogo from "@assets/icons/applications-logos/notion-logo.svg";
-import slackLogo from "@assets/icons/applications-logos/slack_technologies_logo.svg";
-import zapierLogo from "@assets/icons/applications-logos/zapier_Logo.svg";
-import zoomLogo from "@assets/icons/applications-logos/zoom_communications_logo.svg";
 
 import { Picture } from "astro:assets";
 import { getBlurStyle } from "@utils/imageOptimization";
@@ -108,9 +99,7 @@ const clientLogos: ClientLogo[] = [
       "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
     rating: 4,
   },
-  // Add more as needed...
-]; // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+];
 ---
 
 <Layout preloadedImage={heroBg}>
@@ -119,7 +108,7 @@ const clientLogos: ClientLogo[] = [
   <!-- ============================================ -->
   <section
     id="hero-1426"
-    class="relative z-1 overflow-x-clip px-4 pt-38 pb-[clamp(12.5rem,25.95vw,18.75em)] text-center"
+    class="relative z-1 overflow-x-clip px-4 pt-38 pb-[clamp(7.5rem,25.95vw,9em)] text-center"
   >
     <div
       class="w-fll m-auto flex max-w-360 flex-wrap items-center justify-center gap-12"
@@ -155,7 +144,7 @@ const clientLogos: ClientLogo[] = [
     <Picture
       src={heroBg}
       style={heroBlurStyle}
-      class:list={"absolute top-0 left-0 w-full object-cover"}
+      class:list={"absolute top-0 left-0 w-full object-cover lg:-top-30 xl:-top-45"}
       formats={["avif", "webp"]}
       alt="blurred circle side by side"
       pictureAttributes={{
@@ -165,4 +154,603 @@ const clientLogos: ClientLogo[] = [
   </section>
 
   <TestimonialsCarousel cards={clientLogos} />
+
+  <ApplicationLogosCarousel />
+
+  <!-- ============================================ -->
+  <!--                   Steps                      -->
+  <!-- ============================================ -->
+
+  <section id="steps-1173">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Our Work Process</span>
+        <h2 class="cs-title">How To Get Started</h2>
+        <p class="cs-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa libero
+          sint hic accusantium exercitationem, voluptatem officia quaerat velit
+          quis ullam?
+        </p>
+      </div>
+      <ul class="cs-card-group">
+        <li class="cs-item">
+          <picture class="cs-picture">
+            <img
+              class="cs-icon"
+              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/lightbulb-red.svg"
+              alt="icon"
+              width="40"
+              height="40"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </picture>
+          <h3 class="cs-h3">Identify Issues</h3>
+          <p class="cs-item-text">
+            Extensible for web iterate process before meta services impact with
+            employee engagement strategies.
+          </p>
+
+          <!-- <Icon -->
+          <!--   class="mt-5 h-[clamp(3.375rem,6vw,5.25rem)] w-[clamp(3.375rem,6vw,5.25rem)]" -->
+          <!--   name="tabler:arrow-narrow-right" -->
+          <!-- /> -->
+        </li>
+        <li class="cs-item">
+          <picture class="cs-picture">
+            <img
+              class="cs-icon"
+              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/puzzle-red.svg"
+              alt="icon"
+              width="40"
+              height="40"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </picture>
+          <h3 class="cs-h3">Prepare Solution</h3>
+          <p class="cs-item-text">
+            Extensible for web iterate process before meta services impact with
+            employee engagement strategies.
+          </p>
+
+          <!-- <Icon -->
+          <!--   class="mt-5 h-[clamp(3.375rem,6vw,5.25rem)] w-[clamp(3.375rem,6vw,5.25rem)]" -->
+          <!--   name="tabler:arrow-narrow-right" -->
+          <!-- /> -->
+        </li>
+        <li class="cs-item">
+          <picture class="cs-picture">
+            <img
+              class="cs-icon"
+              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/gears-red.svg"
+              alt="icon"
+              width="40"
+              height="40"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </picture>
+          <h3 class="cs-h3">Working On This</h3>
+          <p class="cs-item-text">
+            Extensible for web iterate process before meta services impact with
+            employee engagement strategies.
+          </p>
+        </li>
+      </ul>
+      <div class="flex flex-wrap justify-center gap-2">
+        <a
+          href=""
+          class:list={[
+            "relative m-0 inline-flex h-14 min-w-50 items-center justify-center overflow-clip rounded-xl border-2 border-primary bg-transparent px-6 py-0 text-center font-sans leading-[clamp(2.875rem,5.5vw,3.5rem)] font-bold text-primary uppercase decoration-0 transition-colors duration-300 hover:text-accent-foreground",
+            "before:absolute before:-inset-1 before:-translate-x-51 before:rounded-xl before:bg-accent before:transition-transform before:duration-300 before:ease-out hover:before:translate-x-0",
+          ]}
+        >
+          <span class="relative z-100">Hire Now</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!--                   Services                   -->
+  <!-- ============================================ -->
+
+  <section id="services-880">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Services</span>
+        <h2 class="cs-title">Here to Help You Find a Path Forward</h2>
+        <p class="cs-text">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque,
+          minus temporibus debitis quo nulla molestias quibusdam quisquam dicta
+          eligendi nam. Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Voluptatibus, eum.
+        </p>
+        <p class="cs-text">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque,
+          minus temporibus debitis quo nulla molestias quibusdam quisquam dicta
+          eligendi nam. Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Voluptatibus, eum.
+        </p>
+        <a href="" class="cs-button-solid">View All</a>
+      </div>
+      <ul class="cs-card-group">
+        <li class="cs-item">
+          <a href="" class="cs-link">
+            <picture class="cs-picture" aria-hidden="true">
+              <source
+                media="(max-width: 600px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy2.jpg"
+              />
+              <source
+                media="(min-width: 601px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy2.jpg"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy2.jpg"
+                alt="therapy"
+                width="305"
+                height="200"
+              />
+            </picture>
+            <h3 class="cs-h3">Physical Therapy</h3>
+            <p class="cs-item-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
+              beatae placeat!
+            </p>
+          </a>
+        </li>
+        <li class="cs-item">
+          <a href="" class="cs-link">
+            <picture class="cs-picture" aria-hidden="true">
+              <source
+                media="(max-width: 600px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy3.jpg"
+              />
+              <source
+                media="(min-width: 601px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy3.jpg"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy3.jpg"
+                alt="therapy"
+                width="305"
+                height="200"
+              />
+            </picture>
+            <h3 class="cs-h3">Speech Therapy</h3>
+            <p class="cs-item-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
+              beatae placeat!
+            </p>
+          </a>
+        </li>
+        <li class="cs-item">
+          <a href="" class="cs-link">
+            <picture class="cs-picture" aria-hidden="true">
+              <source
+                media="(max-width: 600px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy4.jpg"
+              />
+              <source
+                media="(min-width: 601px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy4.jpg"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy4.jpg"
+                alt="therapy"
+                width="305"
+                height="200"
+              />
+            </picture>
+            <h3 class="cs-h3">Occupational Therapy</h3>
+            <p class="cs-item-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
+              beatae placeat!
+            </p>
+          </a>
+        </li>
+        <li class="cs-item">
+          <a href="" class="cs-link">
+            <picture class="cs-picture" aria-hidden="true">
+              <source
+                media="(max-width: 600px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy5.jpg"
+              />
+              <source
+                media="(min-width: 601px)"
+                srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy5.jpg"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy5.jpg"
+                alt="therapy"
+                width="305"
+                height="200"
+              />
+            </picture>
+            <h3 class="cs-h3">Nutrition Counseling</h3>
+            <p class="cs-item-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
+              beatae placeat!
+            </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  /*-- -------------------------- -->
+<---           Steps            -->
+<--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #steps-1173 {
+      padding: var(--sectionPadding);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    #steps-1173 .cs-container {
+      width: 100%;
+      /* changes to 1280px at tablet */
+      max-width: 44rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #steps-1173 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: center;
+    }
+
+    #steps-1173 .cs-card-group {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+    #steps-1173 .cs-item {
+      text-align: center;
+      list-style: none;
+      display: flex;
+      grid-column: span 12;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    #steps-1173 .cs-item:last-of-type:after {
+      display: none;
+    }
+    #steps-1173 .cs-item:nth-of-type(even):after {
+      /* scaleX -1 flips it horizontally */
+      transform: rotate(-135deg) scaleX(-1);
+    }
+    /* #steps-1173 .cs-item:after { 
+      content: "";
+      position: relative;
+      display: block;
+      width: clamp(3.375rem, 6vw, 5.25rem);
+      height: clamp(3.375rem, 6vw, 5.25rem);
+      margin-top: 1.25rem;
+      background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/curved-arrow-light.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 1;
+      transform: rotate(135deg);
+    }
+*/
+    #steps-1173 .cs-picture {
+      margin-bottom: 1.5rem;
+      width: 5.5rem;
+      height: 5.5rem;
+      border: 1px solid #858585;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #steps-1173 .cs-icon {
+      width: 2.5rem;
+      height: auto;
+      display: block;
+    }
+    #steps-1173 .cs-h3 {
+      font-size: 1.25rem;
+      line-height: 1.2em;
+      text-align: inherit;
+      margin: 0 0 0.75rem 0;
+      color: var(--headerColor);
+    }
+    #steps-1173 .cs-item-text {
+      font-size: 1rem;
+      line-height: 1.5em;
+      text-align: inherit;
+      max-width: 25.8125rem;
+      margin: 0;
+      color: var(--bodyTextColor);
+    }
+    #steps-1173 .cs-graphic {
+      width: 52.5rem;
+      height: auto;
+      opacity: 0.3;
+      position: absolute;
+      top: -5rem;
+      left: -5rem;
+      z-index: -1;
+      transform: rotate(-10deg);
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #steps-1173 .cs-container {
+      max-width: 80rem;
+    }
+    #steps-1173 .cs-item {
+      grid-column: span 4;
+    }
+    #steps-1173 .cs-item:nth-of-type(1):after {
+      transform: rotate(45deg);
+    }
+    #steps-1173 .cs-item:nth-of-type(2):after {
+      transform: rotate(135deg) scaleX(-1);
+    }
+    #steps-1173 .cs-item:after {
+      margin: 0;
+      position: absolute;
+      right: -2.5rem;
+      top: 0;
+      transform: rotate(45deg);
+    }
+  }
+  /* Dark Mode */
+  @media only screen and (min-width: 0rem) {
+    body.dark-mode #steps-1173 .cs-title,
+    body.dark-mode #steps-1173 .cs-text,
+    body.dark-mode #steps-1173 .cs-item-text,
+    body.dark-mode #steps-1173 .cs-h3 {
+      color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode #steps-1173 .cs-text,
+    body.dark-mode #steps-1173 .cs-item-text {
+      opacity: 0.8;
+    }
+    body.dark-mode #steps-1173 .cs-graphic {
+      opacity: 0.05;
+    }
+  }
+
+  /*-- -------------------------- -->
+<---         Services           -->
+<--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #services-880 {
+      padding: var(--sectionPadding);
+    }
+    #services-880 .cs-container {
+      width: 100%;
+      /* changes to 1280px at tablet */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #services-880 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: left;
+      width: 100%;
+      max-width: 32.625rem;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: flex-start;
+    }
+
+    #services-880 .cs-title {
+      /* max width of 18 characters, includes spaces between words */
+      max-width: 18ch;
+    }
+    #services-880 .cs-text {
+      margin-bottom: 1rem;
+    }
+    #services-880 .cs-text:last-of-type {
+      margin-bottom: 2rem;
+    }
+    #services-880 .cs-button-solid {
+      font-size: 1rem;
+      /* 46px - 56px */
+      line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      min-width: 9.375rem;
+      padding: 0 1.5rem;
+      background-color: var(--primary);
+      border-radius: 0.25rem;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      /* prevents padding from adding to the width */
+      box-sizing: border-box;
+    }
+    #services-880 .cs-button-solid:before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      background: #000;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      border-radius: 0.25rem;
+      transition: width 0.3s;
+    }
+    #services-880 .cs-button-solid:hover:before {
+      width: 100%;
+    }
+    #services-880 .cs-card-group {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    #services-880 .cs-item {
+      text-align: center;
+      list-style: none;
+      border-radius: 1rem;
+      overflow: hidden;
+      background-color: #f7f7f7;
+      grid-column: span 4;
+      position: relative;
+      z-index: 1;
+      transition:
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+    #services-880 .cs-item:hover {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    #services-880 .cs-item:hover .cs-picture img {
+      opacity: 0.3;
+      transform: scale(1.1);
+    }
+    #services-880 .cs-item:hover .cs-h3 {
+      color: var(--primaryLight);
+    }
+    #services-880 .cs-link {
+      text-decoration: none;
+      padding: 0 0 1.25rem 0;
+      display: block;
+    }
+    #services-880 .cs-picture {
+      width: 100%;
+      height: 12.5rem;
+      margin-bottom: 1.25rem;
+      background-color: var(--primaryLight);
+      /* clips the img tag corners */
+      overflow: hidden;
+      display: block;
+      position: relative;
+      z-index: 10;
+    }
+    #services-880 .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition:
+        transform 0.6s,
+        opacity 0.3s;
+    }
+    #services-880 .cs-h3 {
+      font-size: 1.25rem;
+      text-align: inherit;
+      line-height: 1.2em;
+      font-weight: 700;
+      color: var(--headerColor);
+      margin: 0 0 0.75rem 0;
+      /* 16px - 24px */
+      padding: 0 clamp(1rem, 2vw, 1.5rem);
+      transition: color 0.3s;
+    }
+    #services-880 .cs-item-text {
+      /* 14px - 16px  */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      text-align: inherit;
+      line-height: 1.5em;
+      color: var(--bodyTextColor);
+      margin: 0;
+      padding: 0 1.25rem;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #services-880 .cs-container {
+      max-width: 80rem;
+    }
+    #services-880 .cs-item {
+      grid-column: span 2;
+    }
+  }
+  /* Desktop - 1200px */
+  @media only screen and (min-width: 75rem) {
+    #services-880 .cs-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    #services-880 .cs-card-group {
+      width: 50%;
+      max-width: 39.375rem;
+      /* offsets by the same amount the cards are translated */
+      margin-bottom: 3.75rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    #services-880 .cs-item {
+      grid-column: span 1;
+    }
+    #services-880 .cs-item:nth-of-type(1),
+    #services-880 .cs-item:nth-of-type(3) {
+      transform: translateY(3.75rem);
+    }
+  }
+  /* Dark Mode */
+  @media only screen and (min-width: 0rem) {
+    body.dark-mode #services-880 .cs-topper {
+      color: var(--primaryLight);
+    }
+    body.dark-mode #services-880 .cs-title,
+    body.dark-mode #services-880 .cs-text,
+    body.dark-mode #services-880 .cs-h3,
+    body.dark-mode #services-880 .cs-item-text {
+      color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode #services-880 .cs-text,
+    body.dark-mode #services-880 .cs-item-text {
+      opacity: 0.8;
+    }
+    body.dark-mode #services-880 .cs-item {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    body.dark-mode #services-880 .cs-item:before {
+      opacity: 0.3;
+    }
+  }
+</style>

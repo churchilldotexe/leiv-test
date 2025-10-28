@@ -1,0 +1,191 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+import asanaLogo from "@assets/icons/applications-logos/asana_logo.svg";
+import clickupLogo from "@assets/icons/applications-logos/clickup.svg";
+import googleCalendarIcon from "@assets/icons/applications-logos/google_calendar_icon.svg";
+import googleWorkspaceLogo from "@assets/icons/applications-logos/google_workspace_logo.svg";
+import metaPlatformsLogo from "@assets/icons/applications-logos/meta_platforms_inc_logo.svg";
+import microsoftTeamsLogo from "@assets/icons/applications-logos/microsoft_office_teams.svg";
+import mondayLogo from "@assets/icons/applications-logos/monday_logo.svg";
+import notionLogo from "@assets/icons/applications-logos/notion-logo.svg";
+import slackLogo from "@assets/icons/applications-logos/slack_technologies_logo.svg";
+import zapierLogo from "@assets/icons/applications-logos/zapier_Logo.svg";
+import zoomLogo from "@assets/icons/applications-logos/zoom_communications_logo.svg";
+
+export interface AppLogo {
+  src: ImageMetadata;
+  alt: string;
+}
+
+// const { logos, } =
+//   Astro.props;
+const TITLE = "Our virtual assistants bring experience from";
+
+const LOGOS: AppLogo[] = [
+  { src: notionLogo, alt: "Notion" },
+  { src: zoomLogo, alt: "Zoom" },
+  { src: asanaLogo, alt: "Asana" },
+  { src: slackLogo, alt: "Slack" },
+  { src: googleWorkspaceLogo, alt: "Google Workspace" },
+  { src: googleCalendarIcon, alt: "Google Calendar" },
+  { src: microsoftTeamsLogo, alt: "Microsoft Teams" },
+  { src: mondayLogo, alt: "Monday" },
+  { src: clickupLogo, alt: "ClickUp" },
+  { src: metaPlatformsLogo, alt: "Meta" },
+  { src: zapierLogo, alt: "Zapier" },
+] as const;
+
+// Duplicate for seamless loop
+const duplicatedLogos = [...LOGOS, ...LOGOS];
+---
+
+<section class="relative overflow-hidden py-12 md:py-16 lg:pt-34 lg:pb-44">
+  <div class="mx-auto px-4">
+    <!-- Title -->
+    {
+      TITLE && (
+        <h2 class="mx-auto mb-21.25 max-w-lg text-center text-[25px] leading-[130%] font-light text-primary italic md:text-[1.5625rem]">
+          {TITLE}
+        </h2>
+      )
+    }
+
+    <!-- Logos Carousel -->
+    <div class="logos-wrapper">
+      <div class="logos-track" data-logos-track>
+        {
+          duplicatedLogos.map((logo) => (
+            <div class="logo-item">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                class="h-20 w-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+
+  function initLogosCarousel() {
+    const track = document.querySelector("[data-logos-track]") as HTMLElement;
+    if (!track) return;
+
+    const logos = track.querySelectorAll(".logo-item");
+    const logoCount = logos.length / 2; // Original count (we duplicated)
+
+    // Calculate total width of one set (logos + gaps)
+    let totalWidth = 0;
+    for (let i = 0; i < logoCount; i++) {
+      const logo = logos[i] as HTMLElement;
+      totalWidth += logo.offsetWidth + 130; // 130px gap
+    }
+
+    // Set initial position to negative width (start from right)
+    gsap.set(track, { x: -totalWidth });
+
+    // Create infinite animation (LEFT to RIGHT - positive direction)
+    const animation = gsap.to(track, {
+      x: 0,
+      duration: getAnimationDuration(),
+      ease: "none",
+      repeat: -1,
+      modifiers: {
+        x: (x) => {
+          const xValue = parseFloat(x);
+          // When reaching 0, reset to -totalWidth
+          if (xValue >= 0) {
+            return `${-totalWidth}px`;
+          }
+          return `${xValue}px`;
+        },
+      },
+    });
+
+    // Pause on hover
+    track.addEventListener("mouseenter", () => animation.pause());
+    track.addEventListener("mouseleave", () => animation.resume());
+
+    // Handle resize with cleanup
+    let resizeTimeout: number;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        animation.kill();
+        initLogosCarousel();
+      }, 250);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      animation.kill();
+    };
+  }
+
+  function getAnimationDuration(): number {
+    const width = window.innerWidth;
+    if (width < 768) return 30;
+    if (width < 1024) return 40;
+    return 50;
+  }
+
+  // Initialize
+  let cleanup: (() => void) | undefined;
+
+  function init() {
+    cleanup?.(); // Clean up previous instance
+    cleanup = initLogosCarousel();
+  }
+
+  // Run on load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Reinitialize on Astro page transitions
+  document.addEventListener("astro:page-load", init);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanup?.(); // Clean up before navigation
+  });
+</script>
+
+<style>
+  .logos-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logos-track {
+    display: flex;
+    gap: 8.125rem; /* 130px */
+    will-change: transform;
+  }
+
+  .logo-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure smooth rendering */
+  .logos-track,
+  .logo-item {
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+</style>
