@@ -270,26 +270,29 @@ const serviceCards: ServiceCard[] = [
   <!-- ============================================ -->
   <!--                   USE CASE                   -->
   <!-- ============================================ -->
-  <section id="use-case-section" class="px-4 py-[var(--spacing-section)]">
+  <section id="use-case-section" class="px-4 py-section lg:pt-0">
     <div
       class="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 lg:flex-row lg:items-start lg:justify-between"
     >
       <!-- Left content -->
       <div
-        class="flex w-full max-w-md flex-col items-start text-left lg:sticky lg:top-24"
+        class="flex w-full max-w-md flex-col items-start text-left lg:mt-[14.5rem]"
       >
         <span
-          class="mb-2 block font-roboto text-sm font-bold tracking-[0.1em] text-accent uppercase"
+          class="mb-6.25 block font-roboto text-base leading-[120%] font-bold tracking-widest text-accent uppercase"
         >
           Use Case
         </span>
 
         <!-- 3. Header with text gradient -->
         <h2
-          class="m-0 mb-8 max-w-[18ch] bg-gradient-to-r from-primary to-accent bg-clip-text text-[clamp(2.5rem,5vw,3.5rem)] leading-tight font-black text-transparent"
+          class="m-0 mb-12 bg-linear-to-r from-primary to-accent bg-clip-text font-roboto text-[clamp(2.5rem,5vw,3.0625rem)] leading-[120%] font-bold tracking-normal text-nowrap text-transparent"
         >
-          Let Leiva Assistants handle the rest so you can focus on what truly
-          matters.
+          Let Leiva Assistants handle
+          <br />
+          the rest so you can focus
+          <br />
+          on what truly matters.
         </h2>
 
         <HireBtn />
@@ -351,7 +354,7 @@ const serviceCards: ServiceCard[] = [
         </span>
 
         <h2
-          class="m-0 max-w-[22ch] bg-gradient-to-r from-primary to-accent bg-clip-text font-roboto text-[clamp(1.75rem,5vw,2.375rem)] leading-[1.2] font-black text-transparent"
+          class="m-0 max-w-[30ch] bg-gradient-to-r from-primary to-accent bg-clip-text font-roboto text-[clamp(1.75rem,5vw,2.375rem)] leading-[1.2] font-black text-transparent"
         >
           Why choose Leiva Assistants over in-person hires?
         </h2>
@@ -360,17 +363,33 @@ const serviceCards: ServiceCard[] = [
       </div>
 
       <!-- Cards -->
-      <div class="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-2">
+      <div
+        class="mt-10 grid grid-cols-1 place-items-center gap-6 md:mt-14 md:grid-cols-2"
+      >
         <!-- Card: Leiva Assistants -->
         <div
-          class="rounded-2xl bg-white/90 p-6 shadow-[0_20px_60px_-20px_rgba(16,24,40,0.25)] ring-1 ring-black/5 backdrop-blur"
+          class="relative rounded-[40px] bg-white/95 p-6 sm:p-7 md:p-8"
+          style="width: 100%; max-width: 412px; height: 545px;"
         >
-          <h3 class="m-0 text-xl font-bold text-primary">Leiva Assistants</h3>
-          <p class="mt-0.5 mb-5 text-[13px] text-secondary">
+          <!-- card glow -->
+          <div
+            class="pointer-events-none absolute inset-0 -z-10 rounded-[40px]"
+            style="
+            box-shadow:
+              0 40px 120px -20px rgba(172, 104, 137, 0.35),
+              0 12px 30px -10px rgba(0,0,0,0.10),
+              inset 0 0 0 1px rgba(0,0,0,0.06);
+          "
+          >
+          </div>
+          <h3 class="m-0 text-[22px] leading-tight font-bold text-primary">
+            Leiva Assistants
+          </h3>
+          <p class="mt-0.5 mb-5 text-[12px] leading-none text-secondary">
             (Remote Virtual Assistants)
           </p>
 
-          <ul class="m-0 list-none space-y-3 p-0">
+          <ul class="m-0 list-none space-y-4 p-0">
             {
               [
                 "Hire in less than 21 days",
@@ -388,9 +407,9 @@ const serviceCards: ServiceCard[] = [
                 <li class="flex items-start gap-3">
                   <Icon
                     name="tabler:circle-check-filled"
-                    class="mt-0.5 h-5 w-5 text-green-500"
+                    class="mt-[2px] h-5 w-5 text-green-500"
                   />
-                  <span class="text-sm leading-6 text-primary">{item}</span>
+                  <span class="text-[15px] leading-6 text-primary">{item}</span>
                 </li>
               ))
             }
@@ -399,11 +418,25 @@ const serviceCards: ServiceCard[] = [
 
         <!-- Card: In-person Hiring -->
         <div
-          class="rounded-2xl bg-white/90 p-6 shadow-[0_20px_60px_-20px_rgba(16,24,40,0.25)] ring-1 ring-black/5 backdrop-blur"
+          class="relative rounded-[40px] bg-white/95 p-6 sm:p-7 md:p-8"
+          style="width: 100%; max-width: 412px; height: 545px;"
         >
-          <h3 class="m-0 text-xl font-bold text-primary">In-person Hiring</h3>
+          <!-- card glow -->
+          <div
+            class="pointer-events-none absolute inset-0 -z-10 rounded-[40px]"
+            style="
+            box-shadow:
+              0 40px 120px -20px rgba(172, 104, 137, 0.35),
+              0 12px 30px -10px rgba(0,0,0,0.10),
+              inset 0 0 0 1px rgba(0,0,0,0.06);
+          "
+          >
+          </div>
+          <h3 class="m-0 text-[22px] leading-tight font-bold text-primary">
+            In-person Hiring
+          </h3>
 
-          <ul class="m-0 mt-[22px] list-none space-y-3 p-0">
+          <ul class="m-0 mt-[6px] list-none space-y-4 p-0">
             {
               [
                 "Takes months to hire",
@@ -421,9 +454,9 @@ const serviceCards: ServiceCard[] = [
                 <li class="flex items-start gap-3">
                   <Icon
                     name="tabler:circle-x-filled"
-                    class="mt-0.5 h-5 w-5 text-red-500"
+                    class="mt-[2px] h-5 w-5 text-red-500"
                   />
-                  <span class="text-sm leading-6 text-primary">{item}</span>
+                  <span class="text-[15px] leading-6 text-primary">{item}</span>
                 </li>
               ))
             }
