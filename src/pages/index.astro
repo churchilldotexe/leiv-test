@@ -336,6 +336,102 @@ const serviceCards: ServiceCard[] = [
       </ul>
     </div>
   </section>
+
+  <!-- ============================================ -->
+  <!--         Comparison: Assistants vs In‑person  -->
+  <!-- ============================================ -->
+  <section id="comparison-section" class="px-4 py-[var(--spacing-section)]">
+    <div class="mx-auto w-full max-w-7xl">
+      <!-- Eyebrow + Heading + CTA -->
+      <div class="flex flex-col items-center gap-4 text-center">
+        <span
+          class="font-roboto text-sm font-bold tracking-[0.1em] text-accent uppercase"
+        >
+          USE CASE
+        </span>
+
+        <h2
+          class="m-0 max-w-[22ch] bg-gradient-to-r from-primary to-accent bg-clip-text font-roboto text-[clamp(1.75rem,5vw,2.375rem)] leading-[1.2] font-black text-transparent"
+        >
+          Why choose Leiva Assistants over in-person hires?
+        </h2>
+
+        <HireBtn />
+      </div>
+
+      <!-- Cards -->
+      <div class="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-2">
+        <!-- Card: Leiva Assistants -->
+        <div
+          class="rounded-2xl bg-white/90 p-6 shadow-[0_20px_60px_-20px_rgba(16,24,40,0.25)] ring-1 ring-black/5 backdrop-blur"
+        >
+          <h3 class="m-0 text-xl font-bold text-primary">Leiva Assistants</h3>
+          <p class="mt-0.5 mb-5 text-[13px] text-secondary">
+            (Remote Virtual Assistants)
+          </p>
+
+          <ul class="m-0 list-none space-y-3 p-0">
+            {
+              [
+                "Hire in less than 21 days",
+                "Up to 60% lower payroll cost",
+                "Half the cost overall",
+                "Pre-trained & AI powered",
+                "Scales up or down easily",
+                "Managed for you",
+                "Work your schedule",
+                "24/7 support",
+                "Handles business & personal tasks",
+                "Secure info sharing",
+                "Continuous improvement",
+              ].map((item) => (
+                <li class="flex items-start gap-3">
+                  <Icon
+                    name="tabler:circle-check-filled"
+                    class="mt-0.5 h-5 w-5 text-green-500"
+                  />
+                  <span class="text-sm leading-6 text-primary">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Card: In-person Hiring -->
+        <div
+          class="rounded-2xl bg-white/90 p-6 shadow-[0_20px_60px_-20px_rgba(16,24,40,0.25)] ring-1 ring-black/5 backdrop-blur"
+        >
+          <h3 class="m-0 text-xl font-bold text-primary">In-person Hiring</h3>
+
+          <ul class="m-0 mt-[22px] list-none space-y-3 p-0">
+            {
+              [
+                "Takes months to hire",
+                "High payroll & overhead costs",
+                "Expensive to maintain",
+                "Requires full training",
+                "Hard to replace or adjust",
+                "You handle everything",
+                "Fixed hours only",
+                "No backup or coverage",
+                "Limited to role-specific work",
+                "Manual data handling",
+                "Static skill growth",
+              ].map((item) => (
+                <li class="flex items-start gap-3">
+                  <Icon
+                    name="tabler:circle-x-filled"
+                    class="mt-0.5 h-5 w-5 text-red-500"
+                  />
+                  <span class="text-sm leading-6 text-primary">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 <style>
   @media (min-width: 1024px) {
