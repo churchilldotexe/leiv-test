@@ -2,50 +2,155 @@
 import { getBlurStyle } from "@utils/imageOptimization";
 import { Image } from "astro:assets";
 
-export interface ClientLogo {
+import aLister from "@assets/images/client-logos/a-lister.png";
+import aListerBlur from "@assets/images/client-logos/a-lister-blur.png";
+import expLogo from "@assets/images/client-logos/exp-logo.png";
+import expLogoBlur from "@assets/images/client-logos/exp-logo-blur.png";
+import kwLogo from "@assets/images/client-logos/kw-logo.png";
+import kwLogoBlur from "@assets/images/client-logos/kw-logo-blur.png";
+import goddessLoft from "@assets/images/client-logos/goddess-loft.svg";
+import i2lLogo from "@assets/images/client-logos/l2l-logo.avif";
+import i2lLogoBlur from "@assets/images/client-logos/l2l-logo-blur.avif";
+import ligLogo from "@assets/images/client-logos/lig-logo.webp";
+import ligLogoBlur from "@assets/images/client-logos/lig-logo-blur.webp";
+import lihvLogo from "@assets/images/client-logos/lihv-logo.jpg";
+import lihvLogoBlur from "@assets/images/client-logos/lihv-logo-blur.jpg";
+import mattLovit from "@assets/images/client-logos/matt-lovit.png";
+import mattLovitBlur from "@assets/images/client-logos/matt-lovit-blur.png";
+import mulalisaLogo from "@assets/images/client-logos/mulalisa-logo.png";
+import mulalisaLogoBlur from "@assets/images/client-logos/mulalisa-logo-blur.png";
+import obmspirationLogo from "@assets/images/client-logos/obmspiration-logo.png";
+import obmspirationLogoBlur from "@assets/images/client-logos/obmspiration-logo-blur.png";
+import riseupLogo from "@assets/images/client-logos/riseup-logo.jpg";
+import riseupLogoBlur from "@assets/images/client-logos/riseup-logo-blur.jpg";
+import roneLogo from "@assets/images/client-logos/rone-logo.avif";
+import roneLogoBlur from "@assets/images/client-logos/rone-logo-blur.avif";
+import shawnFrench from "@assets/images/client-logos/shawn-french.png";
+import shawnFrenchBlur from "@assets/images/client-logos/shawn-french-blur.png";
+import snobPug from "@assets/images/client-logos/snob-pug.png";
+import snobPugBlur from "@assets/images/client-logos/snob-pug-blur.png";
+import tds from "@assets/images/client-logos/tds.png";
+import tdsBlur from "@assets/images/client-logos/tds-blur.png";
+import treethebarberLogo from "@assets/images/client-logos/treethebarber-logo.jpg";
+import treethebarberLogoBlur from "@assets/images/client-logos/treethebarber-logo-blur.jpg";
+
+export interface Card {
   src: ImageMetadata;
   blurSrc: ImageMetadata;
   alt: string;
-  companyName: string;
+  name: string;
   testimonial: string;
   rating: number;
 }
 
-interface Props {
-  cards: ClientLogo[];
-}
 
-const { cards: logos } = Astro.props;
+const clientCards: Card[] = [
+  {
+    src: roneLogo,
+    blurSrc: roneLogoBlur,
+    alt: "rone",
+    name: "Jack Healy, Founder of RONE Nutrition",
+    testimonial:
+      `
+Working with Leiva Assistants has been a game changer for RONE Nutrition. As our e-commerce brand scaled quickly, customer support became overwhelming — but Gen and Gabbi stepped in and transformed everything.
+Gabbi has been incredibly professional, responsive, and reliable in managing our support tickets and customer inquiries. Thanks to their help, we’ve been able to focus on growth and are already planning to scale further.
+I’m truly grateful for the Leiva Assistants team and excited to keep working with them.
+      `,
+    rating: 5,
+  },
+  {
+    src: aLister,
+    blurSrc: aListerBlur,
+    alt: "Alister",
+    name: "Alister, Founder of A-List Media",
+    testimonial:
+      `
+Gen from Leiva Assistants has been an incredible addition to our team at A-List Media. From day one, she’s been proactive, professional, and a pleasure to work with — handling both client-facing and backend tasks with ease.
+Her communication skills and positive attitude make her a standout partner. I highly recommend Gen and the Leiva Assistants team to anyone looking for reliable, high-quality support.
+      `,
+    rating: 5,
+  },
+  {
+    src: kwLogo,
+    blurSrc: kwLogoBlur,
+    alt: "Keller Williams",
+    name: "Kathy, Keller Williams Realty",
+    testimonial:
+      `
+      Leiva Assistants has been an incredible support system for our Keller Williams Realty team. From creating engaging content to handling our admin tasks behind the scenes, they’ve made everything so much more efficient.
+      Gen and her team are organized, creative, and always one step ahead. It’s been such a relief having them on board — I truly feel like they’re part of our team!
+      `,
+    rating: 5,
+  },
+  {
+    src: expLogo,
+    blurSrc: expLogoBlur,
+    alt: "Exp Realty",
+    name: "Matthew, eXp Realty",
+    testimonial:
+      `
+Working with Leiva Assistants has made a big difference in my business. They helped with my email marketing, content, and admin work — they’re organized, reliable, and make everything run smoother. Hiring a VA truly gave me back my time and let me focus on my clients again
+      `,
+    rating: 5,
+  },
+  {
+    src: riseupLogo,
+    blurSrc: riseupLogoBlur,
+    alt: " RiseUp Community",
+    name: "Max, Founder of RiseUp Community",
+    testimonial:
+      `
+Leiva Assistants, especially Gen and Dominic, have been a huge help in growing my brand, RiseUp Community.
+They’ve created amazing graphics for our Instagram and School of Rise, helped generate leads, and managed a lot of the behind-the-scenes work that keeps things running smoothly.
+They’re fast, reliable, and super easy to work with — I barely have to check in because they just get things done. For the quality of work and the value, I couldn’t recommend Leiva Assistants more
+      `,
+    rating: 5,
+  },
+  {
+    src: goddessLoft,
+    blurSrc: goddessLoft,
+    alt: "Goddess Loft",
+    name: "— Mirv, Owner of The Goddess Loft",
+    testimonial:
+      `
+I finally had time to sit and reflect on how far we’ve come, and you guys are doing such a great job — thank you!
+As a business owner, I’m always looking for ways to do more and do better (story of my life!), and
+working with Leiva Assistants has made that so much easier. I really appreciate all your effort and consistency.
+      `,
+    rating: 4,
+  },
+];
 
-// Duplicate for seamless loop
-const duplicatedLogos = [...logos, ...logos];
 ---
 
-<section class="z-1 bg-background relative overflow-hidden py-12 md:py-16 lg:pt-32 lg:pb-22">
-  <div class="relative w-full min-h-81">
+<section class="z-1 bg-background relative overflow-hidden pt-12 pb-32 md:pt-16 lg:py-32  ">
+  <div class="relative flex items-center w-full min-h-[28.56rem] ">
+<!-- min-h-81 -->
+    {[...Array(2)].map((_,i)=>(
 
-    <div class="flex gap-16 will-change-transform" data-carousel-track>
+    <div class="grid grid-rows-1 gap-16 pr-16 animate-move-to-left " style={`grid-template-columns:repeat(${clientCards.length},1fr)`} >
       {
-        duplicatedLogos.map((logo, index) => {
+        clientCards.map((logo, index) => {
           const blurStyle = getBlurStyle(logo.blurSrc.src);
           const isStaggered = index % 2 === 1;
 
           return (
             <div
               class:list={[
-                "carousel-card",
-                isStaggered && "translate-y-[6.6875rem]",
+                " shrink-0  w-[min(100dvw,39.75rem)] min-w-159 md:w-[min(90vw,39.75rem)]",
+                isStaggered && "mt-50",
               ]}
             >
+{/* h-53.5  */}
               <div
-                class="relative flex h-full w-full flex-col rounded-[2.5rem] bg-[#19191914] p-6 shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm md:p-8"
+                class="relative flex h-fit w-full flex-col rounded-secondary bg-[#19191914] py-12.5 px-7 xs:px-14.5  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
               >
 
                 <!-- style={blurStyle} -->
                 {/* Logo & Rating */}
-                <div class="mb-4 flex items-start justify-between gap-4">
+                <div class="mb-8 flex items-start justify-between gap-4">
                   <Image
-                    class="h-12 w-auto object-contain md:h-16"
+                    class="h-15.5 w-auto object-contain "
                     src={logo.src}
                     alt={logo.alt}
                     loading="lazy"
@@ -56,7 +161,7 @@ const duplicatedLogos = [...logos, ...logos];
                     {Array.from({ length: 5 }, (_, i) => (
                       <svg
                         class:list={[
-                          "h-5 w-5 md:h-6 md:w-6",
+                          "w-7.5 h-6.5",
                           i < logo.rating
                             ? "fill-[#FFA500] text-[#FFA500]"
                             : "fill-gray-300 text-gray-300",
@@ -71,8 +176,12 @@ const duplicatedLogos = [...logos, ...logos];
                 </div>
 
                 {/* Testimonial */}
-                <p class="text-sm leading-relaxed text-secondary md:text-base">
+                <p class="text-[1.19rem] mb-5.5 leading-[130%] font-inter tracking-normal font-normal text-balck ">
                   {logo.testimonial}
+                </p>
+
+                <p class="text-[1.19rem] italic leading-[130%] font-inter tracking-normal font-normal text-balck ">
+                  —{logo.name}
                 </p>
               </div>
             </div>
@@ -80,97 +189,7 @@ const duplicatedLogos = [...logos, ...logos];
         })
       }
     </div>
+    ))}
   </div>
 </section>
 
-<script>
-  import gsap from "gsap";
-
-  function initCarousel() {
-    const track = document.querySelector(
-      "[data-carousel-track]",
-    ) as HTMLElement;
-    if (!track) return;
-
-    const cards = track.querySelectorAll(".carousel-card");
-    const cardCount = cards.length / 2; // Original count (we duplicated)
-
-    // Calculate total width of one set
-    let totalWidth = 0;
-    for (let i = 0; i < cardCount; i++) {
-      const card = cards[i] as HTMLElement;
-      totalWidth += card.offsetWidth + 24; // 24px = gap (1.5rem)
-    }
-
-    // Set initial position
-    gsap.set(track, { x: 0 });
-
-    // Create infinite animation
-    const animation = gsap.to(track, {
-      x: -totalWidth,
-      duration: getAnimationDuration(),
-      ease: "none",
-      repeat: -1,
-      modifiers: {
-        x: (x) => {
-          const progress = parseFloat(x) % totalWidth;
-          return `${progress}px`;
-        },
-      },
-    });
-
-    // Pause on hover
-    track.addEventListener("mouseenter", () => animation.pause());
-    track.addEventListener("mouseleave", () => animation.resume());
-
-    // Handle window resize
-    let resizeTimeout: number;
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = window.setTimeout(() => {
-        // Recalculate width
-        totalWidth = 0;
-        for (let i = 0; i < cardCount; i++) {
-          const card = cards[i] as HTMLElement;
-          totalWidth += card.offsetWidth + 24;
-        }
-
-        // Update animation
-        animation.kill();
-        initCarousel();
-      }, 250);
-    });
-  }
-
-  function getAnimationDuration(): number {
-    const width = window.innerWidth;
-    if (width < 768) return 30; // Mobile - faster
-    if (width < 1024) return 40; // Tablet
-    return 50; // Desktop - slower
-  }
-
-  // Initialize on load
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initCarousel);
-  } else {
-    initCarousel();
-  }
-
-  // Reinitialize on navigation (for Astro view transitions)
-  document.addEventListener("astro:page-load", initCarousel);
-</script>
-
-<style>
-
-  .carousel-card {
-    flex-shrink: 0;
-    width: min(90vw, 39.75rem);
-    height: 13.375rem;
-  }
-
-  @media (max-width: 767px) {
-    .carousel-card {
-      width: min(85vw, 39.75rem);
-    }
-  }
-</style>

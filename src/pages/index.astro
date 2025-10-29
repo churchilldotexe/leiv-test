@@ -7,99 +7,11 @@ import { Icon } from "astro-icon/components";
 import heroBg from "@assets/images/bg/hero-bg.png";
 import heroBlur from "@assets/images/bg/hero-bg-blur.webp";
 
-import aLister from "@assets/images/client-logos/a-lister.png";
-import aListerBlur from "@assets/images/client-logos/a-lister-blur.png";
-import espLogo from "@assets/images/client-logos/exp-logo.png";
-import espLogoBlur from "@assets/images/client-logos/exp-logo-blur.png";
-import kwLogo from "@assets/images/client-logos/kw-logo.png";
-import kwLogoBlur from "@assets/images/client-logos/kw-logo-blur.png";
-import i2lLogo from "@assets/images/client-logos/l2l-logo.avif";
-import i2lLogoBlur from "@assets/images/client-logos/l2l-logo-blur.avif";
-import ligLogo from "@assets/images/client-logos/lig-logo.webp";
-import ligLogoBlur from "@assets/images/client-logos/lig-logo-blur.webp";
-import lihvLogo from "@assets/images/client-logos/lihv-logo.jpg";
-import lihvLogoBlur from "@assets/images/client-logos/lihv-logo-blur.jpg";
-import mattLovit from "@assets/images/client-logos/matt-lovit.png";
-import mattLovitBlur from "@assets/images/client-logos/matt-lovit-blur.png";
-import mulalisaLogo from "@assets/images/client-logos/mulalisa-logo.png";
-import mulalisaLogoBlur from "@assets/images/client-logos/mulalisa-logo-blur.png";
-import obmspirationLogo from "@assets/images/client-logos/obmspiration-logo.png";
-import obmspirationLogoBlur from "@assets/images/client-logos/obmspiration-logo-blur.png";
-import riseupLogo from "@assets/images/client-logos/riseup-logo.jpg";
-import riseupLogoBlur from "@assets/images/client-logos/riseup-logo-blur.jpg";
-import roneLogo from "@assets/images/client-logos/rone-logo.avif";
-import roneLogoBlur from "@assets/images/client-logos/rone-logo-blur.avif";
-import shawnFrench from "@assets/images/client-logos/shawn-french.png";
-import shawnFrenchBlur from "@assets/images/client-logos/shawn-french-blur.png";
-import snobPug from "@assets/images/client-logos/snob-pug.png";
-import snobPugBlur from "@assets/images/client-logos/snob-pug-blur.png";
-import tds from "@assets/images/client-logos/tds.png";
-import tdsBlur from "@assets/images/client-logos/tds-blur.png";
-import treethebarberLogo from "@assets/images/client-logos/treethebarber-logo.jpg";
-import treethebarberLogoBlur from "@assets/images/client-logos/treethebarber-logo-blur.jpg";
-
 import { Picture } from "astro:assets";
 import { getBlurStyle } from "@utils/imageOptimization";
-import type { ClientLogo } from "@components/TestimonialsCarousel.astro";
+import type { Card } from "@components/TestimonialsCarousel.astro";
 
 const heroBlurStyle = getBlurStyle(heroBlur.src);
-
-const clientLogos: ClientLogo[] = [
-  {
-    src: kwLogo,
-    blurSrc: kwLogoBlur,
-    alt: "Keller Williams",
-    companyName: "Keller Williams",
-    testimonial:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
-    rating: 5,
-  },
-  {
-    src: espLogo,
-    blurSrc: espLogoBlur,
-    alt: "ESP",
-    companyName: "ESP",
-    testimonial:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
-    rating: 5,
-  },
-  {
-    src: roneLogo,
-    blurSrc: roneLogoBlur,
-    alt: "Rone",
-    companyName: "Rone",
-    testimonial:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
-    rating: 4,
-  },
-  {
-    src: aLister,
-    blurSrc: aListerBlur,
-    alt: "A-Lister",
-    companyName: "A-Lister",
-    testimonial:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
-    rating: 5,
-  },
-  {
-    src: i2lLogo,
-    blurSrc: i2lLogoBlur,
-    alt: "I2L",
-    companyName: "I2L",
-    testimonial:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
-    rating: 5,
-  },
-  {
-    src: ligLogo,
-    blurSrc: ligLogoBlur,
-    alt: "LIG",
-    companyName: "LIG",
-    testimonial:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex.",
-    rating: 4,
-  },
-];
 ---
 
 <Layout preloadedImage={heroBg}>
@@ -153,7 +65,7 @@ const clientLogos: ClientLogo[] = [
     />
   </section>
 
-  <TestimonialsCarousel cards={clientLogos} />
+  <TestimonialsCarousel />
 
   <ApplicationLogosCarousel />
 
