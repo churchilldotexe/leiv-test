@@ -2,6 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
 import ApplicationLogosCarousel from "@components/ApplicationLogosCarousel.astro";
+import LightBulb from "@components/Icons/Lightbulb.svg";
+import Puzzle from "@components/Icons/Puzzle.svg";
+import Gears from "@components/Icons/Gears.svg";
+
 import { Icon } from "astro-icon/components";
 
 import heroBg from "@assets/images/bg/hero-bg.png";
@@ -80,22 +84,18 @@ const heroBlurStyle = getBlurStyle(heroBlur.src);
       class="mx-auto flex w-full max-w-[44rem] flex-col items-center gap-[clamp(3rem,6vw,4rem)] md:max-w-7xl"
     >
       <!-- Header -->
-      <div
-        class="flex w-full max-w-none flex-col items-center text-center md:max-w-[32.625rem] md:items-center"
-      >
+      <div class="flex w-full flex-col items-center text-center">
         <span
-          class="mb-1 block text-[clamp(0.8125rem,1.6vw,1rem)] leading-[1.2] font-bold tracking-[0.1em] text-primary uppercase"
+          class="mb-1 block font-roboto text-base leading-[120%] font-bold tracking-[0.1rem] text-accent uppercase"
         >
-          Our Work Process
+          How it works
         </span>
         <h2
-          class="relative m-0 mb-4 max-w-[43.75rem] text-[clamp(1.9375rem,3.9vw,3.0625rem)] leading-[1.2] font-black text-primary"
+          class="m-0 mb-4 max-w-[43.75rem] text-center font-roboto text-[clamp(1.9375rem,3.9vw,3.0625rem)] leading-[120%] font-black text-primary uppercase"
         >
-          How To Get Started
+          3 steps only
         </h2>
-        <p
-          class="m-0 w-full max-w-[40.625rem] text-center leading-[1.5] text-[var(--bodyFontSize)] text-secondary"
-        >
+        <p class="m-0 w-full max-w-156 text-base leading-[150%] text-primary">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa libero
           sint hic accusantium exercitationem, voluptatem officia quaerat velit
           quis ullam?
@@ -109,33 +109,29 @@ const heroBlurStyle = getBlurStyle(heroBlur.src);
           class="relative col-span-12 flex list-none flex-col items-center text-center md:col-span-4"
         >
           <picture
-            class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-[#858585]"
+            class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-border"
           >
-            <img
-              class="h-auto w-10"
-              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/lightbulb-red.svg"
-              alt="icon"
-              width="40"
-              height="40"
-              loading="lazy"
-              decoding="async"
-              aria-hidden="true"
-            />
+            <!-- class="h-auto w-10" -->
+            <LightBulb />
           </picture>
-          <h3 class="m-0 mb-3 text-[1.25rem] leading-[1.2] text-primary">
-            Identify Issues
-          </h3>
-          <p
-            class="m-0 max-w-[25.8125rem] text-[1rem] leading-[1.5] text-secondary"
+
+          <!-- New heading format -->
+          <h3
+            class="m-0 mb-3 px-4 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
           >
-            Extensible for web iterate process before meta services impact with
-            employee engagement strategies.
+            STEP 1: Sign up
+          </h3>
+
+          <p
+            class="m-0 max-w-103.25 font-roboto text-base leading-[150%] font-normal tracking-normal text-black"
+          >
+            Fill out the sign up form and schedule a call with us.
           </p>
 
-          <!-- Arrow icon between cards (visible on md+) -->
+          <!-- Arrow between cards on md+ only -->
           <Icon
-            class="mt-5 hidden h-[clamp(3.375rem,6vw,5.25rem)] w-[clamp(3.375rem,6vw,5.25rem)] rotate-45 md:block"
-            name="tabler:arrow-narrow-right"
+            name="icons8:arrows-long-right"
+            class="hidden h-16 w-16 text-accent md:absolute md:top-3 md:right-[-2.75rem] md:block"
           />
         </li>
 
@@ -144,33 +140,29 @@ const heroBlurStyle = getBlurStyle(heroBlur.src);
           class="relative col-span-12 flex list-none flex-col items-center text-center md:col-span-4"
         >
           <picture
-            class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-[#858585]"
+            class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-[var(--color-border,#858585)]"
           >
-            <img
-              class="h-auto w-10"
-              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/puzzle-red.svg"
-              alt="icon"
-              width="40"
-              height="40"
-              loading="lazy"
-              decoding="async"
-              aria-hidden="true"
-            />
+            <Puzzle />
           </picture>
-          <h3 class="m-0 mb-3 text-[1.25rem] leading-[1.2] text-primary">
-            Prepare Solution
-          </h3>
-          <p
-            class="m-0 max-w-[25.8125rem] text-[1rem] leading-[1.5] text-secondary"
+
+          <h3
+            class="m-0 mb-3 px-4 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
           >
-            Extensible for web iterate process before meta services impact with
-            employee engagement strategies.
+            STEP 2: Tell us what you need
+          </h3>
+
+          <p
+            class="m-0 max-w-103.25 font-roboto text-base leading-[150%] font-normal tracking-normal text-black"
+          >
+            During our first call, we’ll discuss everything you’re looking for
+            in an assistant. We’ll use this information to find your perfect
+            candidates.
           </p>
 
-          <!-- Flip the arrow like your original even/odd transforms -->
+          <!-- Arrow between cards on md+ only -->
           <Icon
-            class="mt-5 hidden h-[clamp(3.375rem,6vw,5.25rem)] w-[clamp(3.375rem,6vw,5.25rem)] -scale-x-100 -rotate-45 md:block"
-            name="tabler:arrow-narrow-right"
+            name="icons8:arrows-long-right"
+            class="hidden h-16 w-16 text-accent md:absolute md:top-3 md:-right-11 md:block"
           />
         </li>
 
@@ -179,27 +171,23 @@ const heroBlurStyle = getBlurStyle(heroBlur.src);
           class="relative col-span-12 flex list-none flex-col items-center text-center md:col-span-4"
         >
           <picture
-            class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-[#858585]"
+            class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-[var(--color-border,#858585)]"
           >
-            <img
-              class="h-auto w-10"
-              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/gears-red.svg"
-              alt="icon"
-              width="40"
-              height="40"
-              loading="lazy"
-              decoding="async"
-              aria-hidden="true"
-            />
+            <Gears />
           </picture>
-          <h3 class="m-0 mb-3 text-[1.25rem] leading-[1.2] text-primary">
-            Working On This
-          </h3>
-          <p
-            class="m-0 max-w-[25.8125rem] text-[1rem] leading-[1.5] text-secondary"
+
+          <h3
+            class="m-0 mb-3 px-4 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
           >
-            Extensible for web iterate process before meta services impact with
-            employee engagement strategies.
+            STEP 3: Onboard your assistant On This
+          </h3>
+
+          <p
+            class="m-0 max-w-103.25 font-roboto text-base leading-[150%] font-normal tracking-normal text-black"
+          >
+            We’ll add your new assistants to your account dashboard. If you want
+            us to set you up with any virtual tools, we’ll do that too. On your
+            selected start date, your new assistants will get to work!
           </p>
           <!-- No arrow on last item -->
         </li>
@@ -209,9 +197,12 @@ const heroBlurStyle = getBlurStyle(heroBlur.src);
       <div class="flex flex-wrap justify-center gap-2">
         <a
           href=""
-          class="relative m-0 inline-flex h-14 min-w-50 items-center justify-center overflow-clip rounded-xl border-2 border-primary bg-transparent px-6 py-0 text-center font-sans leading-[clamp(2.875rem,5.5vw,3.5rem)] font-bold text-primary uppercase decoration-0 transition-colors duration-300 before:absolute before:-inset-1 before:-translate-x-[51%] before:rounded-xl before:bg-accent before:transition-transform before:duration-300 before:ease-out hover:text-accent-foreground hover:before:translate-x-0"
+          class:list={[
+            "relative m-0 inline-flex h-14 min-w-50 items-center justify-center overflow-clip rounded-xl border-2 border-primary bg-transparent px-6 py-0 text-center font-sans leading-[clamp(2.875rem,5.5vw,3.5rem)] font-bold text-primary uppercase decoration-0 transition-colors duration-300 hover:text-accent-foreground",
+            "before:absolute before:-inset-1 before:-translate-x-51 before:rounded-xl before:bg-accent before:transition-transform before:duration-300 before:ease-out hover:before:translate-x-0",
+          ]}
         >
-          <span class="relative z-[100]">Hire Now</span>
+          <span class="relative z-100">Hire Now</span>
         </a>
       </div>
     </div>
