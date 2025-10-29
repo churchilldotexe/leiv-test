@@ -2,6 +2,9 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
+import appBg from "@assets/images/bg/app-sec-bg.png";
+import appBgBlur from "@assets/images/bg/app-sec-bg-blur.png";
+
 import asanaLogo from "@assets/icons/applications-logos/asana_logo.svg";
 import clickupLogo from "@assets/icons/applications-logos/clickup.svg";
 import googleCalendarIcon from "@assets/icons/applications-logos/google_calendar_icon.svg";
@@ -13,11 +16,14 @@ import notionLogo from "@assets/icons/applications-logos/notion-logo.svg";
 import slackLogo from "@assets/icons/applications-logos/slack_technologies_logo.svg";
 import zapierLogo from "@assets/icons/applications-logos/zapier_Logo.svg";
 import zoomLogo from "@assets/icons/applications-logos/zoom_communications_logo.svg";
+import { getBlurStyle } from "@utils/imageOptimization";
 
 export interface AppLogo {
   src: ImageMetadata;
   alt: string;
 }
+
+const appBlurStyle = getBlurStyle(appBgBlur.src);
 
 // const { logos, } =
 //   Astro.props;
@@ -77,4 +83,11 @@ const duplicatedLogos = [...LOGOS];
       }
     </div>
   </div>
+
+  <Image
+    src={appBg}
+    class="absolute top-1/2 left-1/2 -z-1 -translate-1/2 scale-300 xs:scale-200 sm:scale-160 md:scale-130 lg:scale-90"
+    alt={"blurred bg"}
+    style={appBlurStyle}
+  />
 </section>
