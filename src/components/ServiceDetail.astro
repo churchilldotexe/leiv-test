@@ -4,6 +4,10 @@ import s3Blur from "@assets/images/bg/section-bg-3-blur.png";
 
 import { Image } from "astro:assets";
 import HireBtn from "./HireBtn.astro";
+interface Props {
+  title: string;
+}
+const { title } = Astro.props as Props;
 ---
 
 <section id="main-services" class="relative z-1 overflow-clip px-4 py-section">
@@ -21,7 +25,7 @@ import HireBtn from "./HireBtn.astro";
       <h2
         class="m-0 mb-10.75 bg-linear-to-r from-primary to-accent bg-clip-text text-center font-roboto text-[clamp(2.5rem,5vw,3.0625rem)] leading-h font-bold tracking-normal text-transparent"
       >
-        Scale Your Business and Simplify Your Life
+        {title}
       </h2>
 
       <HireBtn />

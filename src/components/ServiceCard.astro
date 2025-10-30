@@ -1,19 +1,21 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 type Props = HTMLAttributes<"div">;
-
+// px-30
 const { class: className, ...rest } = Astro.props as Props;
+const baseClass = "bg-shadow-rounded w-fit rounded-[28px] py-11.25";
+const classes = [baseClass, className].filter(Boolean).join(" ");
 ---
 
-<div class="bg-bg-bg w-fit rounded-[28px] px-30 py-11.25" {...rest}>
+<div class={classes} {...rest}>
   <h1
-    class="mb-9 text-center font-roboto text-25px leading-[100%] text-primary"
+    class="mb-9 text-center font-roboto text-[clamp(1rem,5vw,1.5625rem)] leading-[100%] text-primary"
   >
     <slot name="title" />
   </h1>
 
   <!-- Inner card -->
-  <div class="mx-auto">
+  <div class="mx-auto flex items-center justify-center">
     <!-- <Image src={src} alt={alt} /> -->
     <slot name="content" />
   </div>
@@ -48,9 +50,8 @@ const { class: className, ...rest } = Astro.props as Props;
       0 2px 6px rgba(0, 102, 255, 0.3);
   }
 
-  .bg-bg-bg {
+  .bg-shadow-rounded {
     /* background: rgba(25, 25, 25, 0.08); */
-
     background: rgba(25, 25, 25, 0.08);
     box-shadow: 0px 4px 80px 5px rgba(18, 18, 18, 0.25);
     border-radius: 40px;

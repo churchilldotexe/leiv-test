@@ -7,55 +7,44 @@ import ServiceDetail from "@components/ServiceDetail.astro";
 import ServiceHero, {
   type ServiceFeature,
 } from "@components/ServiceHero.astro";
-import Mail from "@components/Icons/Mail.svg";
-import Calendar from "@components/Icons/Calendar.svg";
-import Filter from "@components/Icons/Filter.svg";
 import Shield from "@components/Icons/Shield.svg";
 import Drafting from "@components/Icons/Drafting.svg";
 import StoreBell from "@components/Icons/StoreBell.svg";
 import ServiceCard from "@components/ServiceCard.astro";
-import CalendarSvc from "@components/ServiceIcon/CalendarSvc.svg";
-import AppSvc from "@components/ServiceIcon/AppSvc.svg";
-import CheckboxSvc from "@components/ServiceIcon/CheckboxSvc.svg";
+
+import Support1 from "@components/ServiceIcon/Support1.svg";
+import Support2 from "@components/ServiceIcon/Support2.svg";
+import Support1Img from "@assets/images/services/support-1.png";
 
 import heroBg from "@assets/images/bg/hero-bg.png";
 import ApplicationLogosCarousel from "@components/ApplicationLogosCarousel.astro";
 
-const title = "Executive Assistant";
-const description = `
-        Let our virtual assistants handle the tasks that slow you down, so you
-        can focus on strategy, growth, and the things you love most. With
-        reliable support and seamless execution, we make running your business
-        easier, smarter, and stress-free.
-`;
+const title = "Customer Support Assistant";
+const description = `Keep customers happy, supported, and loyal. These assistants manage communication across email, chat, and support platforms to deliver fast, empathetic service that drives retention.`;
 
 const serviceFeature: ServiceFeature = {
   title,
   description,
   features: [
     {
-      Icon: Mail,
-      description: "Calendar and email management",
+      Icon: Shield,
+      description: "Respond to customer inquiries via email or chat",
     },
     {
       Icon: Shield,
-      description: "Travel arrangements and reservations",
-    },
-    {
-      Icon: Calendar,
-      description: "Meeting scheduling and follow-ups",
+      description: "Process returns or refunds",
     },
     {
       Icon: Drafting,
-      description: "Drafting reports and internal memos",
+      description: "Manage ticketing systems (e.g., Zendesk, Freshdesk)",
     },
     {
-      Icon: Filter,
-      description: "Inbox triage and priority filtering",
+      Icon: Drafting,
+      description: "Monitor reviews and feedback channels",
     },
     {
       Icon: StoreBell,
-      description: "Managing to-do lists and reminders",
+      description: "Escalate issues to internal teams",
     },
   ],
 };
@@ -64,50 +53,36 @@ const serviceFeature: ServiceFeature = {
 <Layout preloadedImage={heroBg}>
   <ServiceHero serviceFeature={serviceFeature} />
   <ServiceDetail title="Keep your customers happy, even while you sleep.">
-    <div class="service-grid w-full">
+    <div
+      class="grid w-full grid-cols-1 justify-items-center gap-10.75 md:grid-cols-2"
+    >
       <!-- max-w-136  -->
       <ServiceCard
-        class="w-full px-5 xl:px-10 2xl:px-15"
-        style="grid-area:calendar"
+        class="w-full max-w-154.5 bg-[#ededed]! px-5 xl:px-10 2xl:px-15"
         id="calendar-service"
       >
         <Fragment slot="title">
-          Organize and maintain your
+          Handle up to 80% of customer
           <br />
-          calendar with precision
+          inquiries and support tickets Organize
         </Fragment>
         <Fragment slot="content">
-          <CalendarSvc class="aspect-video h-auto w-62.5 xs:w-75 sm:w-auto" />
+          <!-- <Support1 /> -->
+          <Image src={Support1Img} alt={"chat messages"} />
         </Fragment>
       </ServiceCard>
 
       <ServiceCard
-        class="w-full px-5 xl:px-10 2xl:px-15"
-        style="grid-area:app"
+        class="w-full max-w-154.5 bg-[#ededed]! px-5 xl:px-10 2xl:px-15"
         id="app-service"
       >
         <Fragment slot="title">
-          Manage your inbox and handle
+          Our strategy is to manage most
           <br />
-          important communications
+          inquiries efficiently.
         </Fragment>
         <Fragment slot="content">
-          <AppSvc class="aspect-video h-auto w-62.5 xs:w-75 sm:w-auto" />
-        </Fragment>
-      </ServiceCard>
-
-      <ServiceCard
-        class="w-full px-5 xl:px-10 2xl:px-15"
-        style="grid-area:checkbox"
-        id="checkbox-service"
-      >
-        <Fragment slot="title">
-          Organize and maintain your
-          <br />
-          calendar with precision
-        </Fragment>
-        <Fragment slot="content">
-          <CheckboxSvc class="aspect-video h-auto w-62.5 xs:w-75 sm:w-auto" />
+          <Support2 />
         </Fragment>
       </ServiceCard>
     </div>
