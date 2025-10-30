@@ -126,6 +126,7 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
 <section class="z-1 bg-background relative overflow-hidden pt-12 pb-32 md:pt-16 lg:py-32 ">
   <div class="relative flex items-center w-full min-h-[28.56rem] ">
 <!-- min-h-81 -->
+
     {[...Array(2)].map((_,i)=>(
 
     <div class="grid grid-rows-1 gap-16 pr-16 animate-move-to-left " style={`grid-template-columns:repeat(${clientCards.length},1fr)`} >
@@ -137,20 +138,20 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
           return (
             <div
               class:list={[
-                " shrink-0  w-[min(100dvw,39.75rem)] min-w-159 md:w-[min(90vw,39.75rem)]",
+                " shrink-0  w-[min(100dvw,39.75rem)] sm:min-w-159 md:w-[min(90vw,39.75rem)]",
                 isStaggered && "mt-50",
               ]}
             >
 {/* h-53.5  */}
               <div
-                class="relative flex h-fit w-full flex-col rounded-secondary bg-[#19191914] py-12.5 px-7 xs:px-14.5  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
+                class="relative flex h-fit w-full flex-col rounded-secondary bg-[#19191914] py-12.5 px-4 xs:px-14.5  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
               >
 
                 <!-- style={blurStyle} -->
                 {/* Logo & Rating */}
                 <div class="mb-8 flex items-start justify-between gap-4">
                   <Image
-                    class="h-15.5 w-auto object-contain "
+                    class="h-12 sm:h-15.5 w-auto object-contain "
                     src={logo.src}
                     alt={logo.alt}
                     loading="lazy"
@@ -176,11 +177,11 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
                 </div>
 
                 {/* Testimonial */}
-                <p class="text-[1.19rem] mb-5.5 leading-[130%] font-inter tracking-normal font-normal text-balck ">
+                <p class="text-[clamp(1rem,3vw,1.19rem)] mb-5.5 leading-[130%] font-inter tracking-normal font-normal text-balck ">
                   {logo.testimonial}
                 </p>
 
-                <p class="text-[1.19rem] italic leading-[130%] font-inter tracking-normal font-normal text-balck ">
+                <p class="text-[clamp(1rem,3vw,1.19rem] italic leading-[130%] font-inter tracking-normal font-normal text-balck ">
                   —{logo.name}
                 </p>
               </div>
