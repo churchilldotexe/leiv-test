@@ -4,6 +4,8 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
 import heroBg from "@assets/images/bg/hero-bg.png";
+import HireBtn from "@components/HireBtn.astro";
+import ApplicationLogosCarousel from "@components/ApplicationLogosCarousel.astro";
 
 interface ServiceCard {
   title: string;
@@ -22,31 +24,31 @@ const serviceCards: ServiceCard[] = [
     title: "Executive Assistant",
     description:
       "Manage your schedule with precision so you can focus on leading.",
-    href: "/executive",
+    href: "/services/executive",
   },
   {
     title: "Customer Support Assistant",
     description:
       "Deliver customer support that keeps your customers happy and loyal.",
-    href: "/support",
+    href: "/services/support",
   },
   {
     title: "Social Media Manager",
     description:
       "Build your brand online through engaging content, consistent posting, and more.",
-    href: "/social",
+    href: "/services/social",
   },
   {
     title: "Virtual Assistant",
     description:
       "Handle day-to-day tasks efficiently, freeing up your time for what matters.",
-    href: "/virtual",
+    href: "/services/virtual",
   },
   {
     title: "Administrative Assistant",
     description:
       "Keep operations smooth and tasks organized with expert document and task management.",
-    href: "/admin",
+    href: "/services/admin",
   },
   {
     title: "Real Estate Assistant",
@@ -95,12 +97,15 @@ const serviceCards: ServiceCard[] = [
       <!-- sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2 -->
 
       <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] gap-5"
+        class="mb-4 grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] gap-5"
       >
         {
           serviceCards.map((card) => (
             <div class="group flex flex-col gap-4 rounded-sm bg-accent-tertiary px-7 py-10 transition-colors duration-200 hover:bg-primary">
-              <h6 class="font-roboto text-[clamp(1rem,5vw,1.5625rem)] font-bold text-primary transition-colors duration-200 group-hover:text-primary-foreground">
+              <h6
+                class="font-roboto text-[clamp(1rem,5vw,1.5625rem)] font-bold text-primary transition-colors duration-200 group-hover:text-primary-foreground"
+                transition:name={card.href}
+              >
                 {card.title}
               </h6>
               <p class="flex-1 font-roboto leading-p text-primary transition-colors duration-200 group-hover:text-primary-foreground">
@@ -121,6 +126,8 @@ const serviceCards: ServiceCard[] = [
           ))
         }
       </div>
+
+      <HireBtn />
     </div>
 
     <Image
@@ -129,4 +136,6 @@ const serviceCards: ServiceCard[] = [
       class={"absolute inset-0 w-full h-full -z-1  "}
     />
   </section>
+
+  <ApplicationLogosCarousel />
 </Layout>

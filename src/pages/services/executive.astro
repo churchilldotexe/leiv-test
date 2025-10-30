@@ -1,0 +1,107 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import ServiceDetail from "@components/ServiceDetail.astro";
+import ServiceHero, {
+  type ServiceFeature,
+} from "@components/ServiceHero.astro";
+import Mail from "@components/Icons/Mail.svg";
+import Calendar from "@components/Icons/Calendar.svg";
+import Filter from "@components/Icons/Filter.svg";
+import Shield from "@components/Icons/Shield.svg";
+import Drafting from "@components/Icons/Drafting.svg";
+import StoreBell from "@components/Icons/StoreBell.svg";
+import ServiceCard from "@components/ServiceCard.astro";
+import CalendarSvc from "@components/ServiceIcon/CalendarSvc.svg";
+import AppSvc from "@components/ServiceIcon/AppSvc.svg";
+import CheckboxSvc from "@components/ServiceIcon/CheckboxSvc.svg";
+
+import heroBg from "@assets/images/bg/hero-bg.png";
+import ApplicationLogosCarousel from "@components/ApplicationLogosCarousel.astro";
+
+const title = "Executive Assistant";
+const description = `
+        Let our virtual assistants handle the tasks that slow you down, so you
+        can focus on strategy, growth, and the things you love most. With
+        reliable support and seamless execution, we make running your business
+        easier, smarter, and stress-free.
+`;
+
+const serviceFeature: ServiceFeature = {
+  title,
+  description,
+  features: [
+    {
+      Icon: Mail,
+      description: "Calendar and email management",
+    },
+    {
+      Icon: Calendar,
+      description: "Meeting scheduling and follow-ups",
+    },
+    {
+      Icon: Filter,
+      description: "Inbox triage and priority filtering",
+    },
+    {
+      Icon: Shield,
+      description: "Travel arrangements and reservations",
+    },
+    {
+      Icon: Drafting,
+      description: "Drafting reports and internal memos",
+    },
+    {
+      Icon: StoreBell,
+      description: "Managing to-do lists and reminders",
+    },
+  ],
+};
+---
+
+<Layout preloadedImage={heroBg}>
+  <ServiceHero serviceFeature={serviceFeature} />
+  <ServiceDetail>
+    <div class="service-grid">
+      <ServiceCard>
+        <Fragment slot="title">
+          Organize and maintain your
+          <br />
+          calendar with precision
+        </Fragment>
+        <Fragment slot="content">
+          <CalendarSvc />
+        </Fragment>
+      </ServiceCard>
+      <ServiceCard>
+        <Fragment slot="title">
+          Manage your inbox and handle
+          <br />
+          important communications
+        </Fragment>
+        <Fragment slot="content">
+          <AppSvc />
+        </Fragment>
+      </ServiceCard>
+      <ServiceCard>
+        <Fragment slot="title">
+          Organize and maintain your
+          <br />
+          calendar with precision
+        </Fragment>
+        <Fragment slot="content">
+          <CheckboxSvc />
+        </Fragment>
+      </ServiceCard>
+    </div>
+  </ServiceDetail>
+
+  <ApplicationLogosCarousel />
+</Layout>
+
+<style>
+  .service-grid {
+    display: grid;
+  }
+</style>

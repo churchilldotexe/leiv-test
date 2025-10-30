@@ -42,10 +42,6 @@ const LOGOS: AppLogo[] = [
   { src: metaPlatformsLogo, alt: "Meta" },
   { src: zapierLogo, alt: "Zapier" },
 ] as const;
-
-// Duplicate for seamless loop
-// const duplicatedLogos = [...LOGOS, ...LOGOS];
-const duplicatedLogos = [...LOGOS];
 ---
 
 <!-- lg:pt-34 -->
@@ -62,16 +58,16 @@ const duplicatedLogos = [...LOGOS];
 
     <!-- Logos Carousel -->
     <div
-      class="scrollbar-hide relative mx-auto flex w-full items-center justify-end overflow-x-auto"
+      class="scrollbar-hide mask-bg-3 relative mx-auto flex w-full items-center justify-end overflow-x-auto"
     >
       {
         [...Array(2)].map((_, i) => (
           <div
             aria-hidden={i === 1}
             class="grid animate-move-to-right grid-rows-1 gap-32.5 pl-32.5"
-            style={`grid-template-columns: repeat(${duplicatedLogos.length},1fr);`}
+            style={`grid-template-columns: repeat(${LOGOS.length},1fr);`}
           >
-            {duplicatedLogos.map((logo) => (
+            {LOGOS.map((logo) => (
               <Image
                 src={logo.src}
                 alt={logo.alt}
