@@ -255,15 +255,6 @@
 
 }
 
-/* Hide scrollbar but keep scrolling */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
   @keyframes move-to-left {
     from {
       translate: 0;
@@ -283,3 +274,30 @@
       translate: 100%;
     }
   }
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Pause animations on container hover */
+.animation-stop:active  {
+  animation-play-state: paused !important; /* !important to override any inline styles if needed */
+}
+
+
+/* Pause animations on container hover */
+.animation-stop:hover ,
+.animation-stop:hover {
+  animation-play-state: paused !important; /* !important to override any inline styles if needed */
+}
+
+/* Optional: Also pause on focus for better accessibility (keyboard navigation) */
+.animation-stop:focus-within ,
+.animation-stop:focus-within {
+  animation-play-state: paused !important;
+}

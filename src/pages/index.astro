@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Layout from "../layouts/Layout.astro";
 import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
 import ApplicationLogosCarousel from "@components/ApplicationLogosCarousel.astro";
@@ -275,9 +276,8 @@ const serviceCards: ServiceCard[] = [
       class="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 lg:flex-row lg:items-start lg:justify-between"
     >
       <!-- Left content -->
-      <!-- lg:mt-58 -->
       <div
-        class="flex w-full max-w-md flex-col items-start text-left lg:absolute xl:mt-50"
+        class="flex w-full max-w-md flex-col items-center text-left lg:absolute lg:items-start xl:mt-50"
       >
         <span
           class="mb-6.25 block font-roboto text-base leading-[120%] font-bold tracking-widest text-accent uppercase"
@@ -287,12 +287,12 @@ const serviceCards: ServiceCard[] = [
 
         <!-- 3. Header with text gradient -->
         <h2
-          class="m-0 mb-12 bg-linear-to-r from-primary to-accent bg-clip-text font-roboto text-[clamp(2.5rem,5vw,3.0625rem)] leading-[120%] font-bold tracking-normal text-transparent md:text-nowrap"
+          class="m-0 mb-12 bg-linear-to-r from-primary to-accent bg-clip-text text-center font-roboto text-[clamp(2.5rem,5vw,3.0625rem)] leading-[120%] font-bold tracking-normal text-transparent md:text-nowrap lg:text-left"
         >
           Let Leiva Assistants handle
-          <br />
+          <br class="hidden md:inline" />
           the rest so you can focus
-          <br />
+          <br class="hidden md:inline" />
           on what truly matters.
         </h2>
 
@@ -302,7 +302,7 @@ const serviceCards: ServiceCard[] = [
       <!-- Right cards grid -->
       <ul
         id="use-case-grid"
-        class="m-0 grid w-full max-w-2xl grid-cols-1 gap-8 p-0 md:max-w-none lg:w-auto lg:flex-1"
+        class="m-0 grid w-full max-w-xl p-0 lg:w-auto lg:max-w-none lg:flex-1"
       >
         {
           serviceCards.map((card) => (
@@ -314,7 +314,7 @@ const serviceCards: ServiceCard[] = [
               <a href={card.href ?? "#"} class="block no-underline">
                 <div class="overflow-hidden">
                   <Picture
-                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    class="h-120 w-full object-cover transition-transform duration-300 group-hover:scale-110 lg:h-full lg:min-h-full lg:w-full"
                     src={card.img}
                     alt={card.alt}
                     style={card.blurImg}
@@ -347,7 +347,7 @@ const serviceCards: ServiceCard[] = [
   <section id="comparison-section" class="px-4 py-[var(--spacing-section)]">
     <div class="mx-auto w-full max-w-7xl">
       <!-- Eyebrow + Heading + CTA -->
-      <div class="flex flex-col items-center gap-4 text-center">
+      <div class="flex flex-col items-center gap-4 pb-12 text-center">
         <span
           class="font-roboto text-sm font-bold tracking-[0.1em] text-accent uppercase"
         >
@@ -365,19 +365,20 @@ const serviceCards: ServiceCard[] = [
 
       <!-- Cards -->
       <div
-        class="mt-10 grid grid-cols-1 place-items-center gap-6 md:mt-14 md:grid-cols-2"
+        class="mx-auto mt-10 grid grid-cols-1 place-content-center justify-items-center gap-15 lg:mt-14 lg:w-fit lg:grid-cols-2 lg:gap-33"
       >
         <!-- Card: Leiva Assistants -->
         <div
-          class="relative rounded-[40px] bg-white/95 p-6 sm:p-7 md:p-8"
-          style="width: 100%; max-width: 412px; height: 545px;"
+          class="relative w-full max-w-103 rounded-secondary bg-white/95 px-7 py-5 sm:p-11 md:p-16"
         >
           <!-- card glow -->
           <div
-            class="pointer-events-none absolute inset-0 -z-10 rounded-[40px] shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073]"
+            class="pointer-events-none absolute inset-0 -z-10 rounded-secondary shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073]"
           >
           </div>
-          <h3 class="m-0 text-[22px] leading-tight font-bold text-primary">
+          <h3
+            class="mx-0 mt-0 mb-6.25 text-[1.5625rem] leading-tight font-bold text-[#4D4D4D]"
+          >
             Leiva Assistants
           </h3>
           <p class="mt-0.5 mb-5 text-[12px] leading-none text-secondary">
@@ -413,15 +414,16 @@ const serviceCards: ServiceCard[] = [
 
         <!-- Card: In-person Hiring -->
         <div
-          class="relative rounded-[40px] bg-white/95 p-6 sm:p-7 md:p-8"
-          style="width: 100%; max-width: 412px; height: 545px;"
+          class="relative w-full max-w-103 rounded-secondary bg-white/95 px-7 py-5 sm:p-11 md:p-16"
         >
           <!-- card glow -->
           <div
-            class="pointer-events-none absolute inset-0 -z-10 rounded-[40px] shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073]"
+            class="pointer-events-none absolute inset-0 -z-10 rounded-secondary shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073]"
           >
           </div>
-          <h3 class="m-0 text-[22px] leading-tight font-bold text-primary">
+          <h3
+            class="mx-0 mt-0 mb-6.25 text-[1.5625rem] leading-[100%] font-bold text-[#4D4D4D]"
+          >
             In-person Hiring
           </h3>
 
@@ -456,6 +458,18 @@ const serviceCards: ServiceCard[] = [
   </section>
 </Layout>
 <style>
+  @media (max-width: 1023px) {
+    #use-case-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "streamline"
+        "optimize"
+        "build"
+        "protect"
+        "delegate";
+      gap: 1.25rem;
+    }
+  }
   @media (min-width: 1024px) {
     #use-case-grid {
       display: grid;
