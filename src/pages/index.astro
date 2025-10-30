@@ -8,12 +8,18 @@ import Puzzle from "@components/Icons/Puzzle.svg";
 import Gears from "@components/Icons/Gears.svg";
 import HireBtn from "@components/HireBtn.astro";
 
-import { Picture } from "astro:assets";
+import { Picture, Image } from "astro:assets";
 import { getBlurStyle } from "@utils/imageOptimization";
 import { Icon } from "astro-icon/components";
 
 import heroBg from "@assets/images/bg/hero-bg.png";
 import heroBlur from "@assets/images/bg/hero-bg-blur.webp";
+import s3Bg from "@assets/images/bg/section-bg-3.png";
+import s3Blur from "@assets/images/bg/section-bg-3-blur.png";
+import s4Bg from "@assets/images/bg/section-bg-4.png";
+import s4Blur from "@assets/images/bg/section-bg-4-blur.png";
+import s5Bg from "@assets/images/bg/section-bg-5.png";
+import s5Blur from "@assets/images/bg/section-bg-5-blur.png";
 
 import svcImg1 from "@assets/images/ai-images/img-1.png";
 import svcImg1Blur from "@assets/images/ai-images/img-1-blur.png";
@@ -29,6 +35,9 @@ import type { ImageMetadata } from "astro";
 import { title } from "process";
 
 const heroBlurStyle = getBlurStyle(heroBlur.src);
+const s3BlurStyle = getBlurStyle(s3Blur.src);
+const s4BlurStyle = getBlurStyle(s4Blur.src);
+const s5BlurStyle = getBlurStyle(s5Blur.src);
 
 // Updated ServiceCard type to include new properties
 type ServiceCard = {
@@ -150,6 +159,13 @@ const serviceCards: ServiceCard[] = [
     id="steps-1173"
     class="relative z-[1] overflow-clip px-4 py-[var(--spacing-section)]"
   >
+    <Image
+      src={s3Bg}
+      alt={"blur for bg"}
+      style={s3BlurStyle}
+      class={"absolute inset-0 w-full h-full -z-1  "}
+    />
+
     <div
       class="mx-auto flex w-full max-w-[44rem] flex-col items-center gap-[clamp(3rem,6vw,4rem)] md:max-w-7xl"
     >
@@ -176,7 +192,7 @@ const serviceCards: ServiceCard[] = [
       <ul class="m-0 grid w-full grid-cols-12 gap-5 p-0">
         <!-- Item 1 -->
         <li
-          class="relative col-span-12 flex list-none flex-col items-center text-center md:col-span-4"
+          class="relative col-span-12 flex list-none flex-col items-center px-4 text-center md:col-span-4"
         >
           <picture
             class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-border"
@@ -187,7 +203,7 @@ const serviceCards: ServiceCard[] = [
 
           <!-- New heading format -->
           <h3
-            class="m-0 mb-3 px-4 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
+            class="m-0 mb-3 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
           >
             STEP 1: Sign up
           </h3>
@@ -207,7 +223,7 @@ const serviceCards: ServiceCard[] = [
 
         <!-- Item 2 -->
         <li
-          class="relative col-span-12 flex list-none flex-col items-center text-center md:col-span-4"
+          class="relative col-span-12 flex list-none flex-col items-center px-4 text-center md:col-span-4"
         >
           <picture
             class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-[var(--color-border,#858585)]"
@@ -216,7 +232,7 @@ const serviceCards: ServiceCard[] = [
           </picture>
 
           <h3
-            class="m-0 mb-3 px-4 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
+            class="m-0 mb-3 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
           >
             STEP 2: Tell us what you need
           </h3>
@@ -238,7 +254,7 @@ const serviceCards: ServiceCard[] = [
 
         <!-- Item 3 -->
         <li
-          class="relative col-span-12 flex list-none flex-col items-center text-center md:col-span-4"
+          class="relative col-span-12 flex list-none flex-col items-center px-4 text-center md:col-span-4"
         >
           <picture
             class="mb-6 flex h-22 w-22 items-center justify-center rounded-full border border-border"
@@ -247,7 +263,7 @@ const serviceCards: ServiceCard[] = [
           </picture>
 
           <h3
-            class="m-0 mb-3 px-4 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
+            class="m-0 mb-3 font-roboto text-[1.5625rem] leading-[120%] font-bold tracking-normal text-primary"
           >
             STEP 3: Onboard your assistant On This
           </h3>
@@ -271,7 +287,14 @@ const serviceCards: ServiceCard[] = [
   <!-- ============================================ -->
   <!--                   USE CASE                   -->
   <!-- ============================================ -->
-  <section id="use-case-section" class="px-4 py-section lg:pt-0">
+  <section id="use-case-section" class="relative px-4 py-section lg:pt-0">
+    <Image
+      src={s4Bg}
+      alt={"blur for bg"}
+      style={s4BlurStyle}
+      class={"absolute inset-0 w-full h-full -z-1  "}
+    />
+
     <div
       class="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 lg:flex-row lg:items-start lg:justify-between"
     >
@@ -344,7 +367,17 @@ const serviceCards: ServiceCard[] = [
   <!-- ============================================ -->
   <!--         Comparison: Assistants vs In‑person  -->
   <!-- ============================================ -->
-  <section id="comparison-section" class="px-4 py-[var(--spacing-section)]">
+  <section
+    id="comparison-section"
+    class="relative px-4 py-[var(--spacing-section)]"
+  >
+    <Image
+      src={s5Bg}
+      alt={"blur for bg"}
+      style={s5BlurStyle}
+      class={"absolute inset-0 w-full h-full -z-15  "}
+    />
+
     <div class="mx-auto w-full max-w-7xl">
       <!-- Eyebrow + Heading + CTA -->
       <div class="flex flex-col items-center gap-4 pb-12 text-center">
