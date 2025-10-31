@@ -6,6 +6,23 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"header"> {}
 
+const normalize = (p: string) => (p.endsWith("/") ? p : p + "/");
+const currentPath = normalize(Astro.url.pathname);
+const isHome = (url: string) => url === "/";
+const isEntryActive = (entry: {
+  url: string;
+  children?: Array<{ url: string }>;
+}) => {
+  const entryUrl = normalize(entry.url);
+  if (isHome(entryUrl)) return currentPath === "/";
+  const exact = currentPath === entryUrl;
+  const childHit =
+    entry.children?.some((c) => normalize(c.url) === currentPath) ?? false;
+  const inSection = currentPath.startsWith(entryUrl);
+  // Mark active if exact, any child matches, or you’re inside the section
+  return exact || childHit || inSection;
+};
+
 const props = Astro.props as Props;
 ---
 
@@ -84,14 +101,9 @@ const props = Astro.props as Props;
                         "lg:block lg:px-2 before:lg:block",
                         "before:absolute before:bottom-0.5 before:left-0 before:hidden before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-accent before:opacity-100 before:transition-transform before:duration-300",
                         "group-hover:before:scale-x-100 hover:before:scale-x-100",
-                        {
-                          "cs-active bg-orange-200 text-gray-50":
-                            Astro.url.pathname === entry.url,
-                        },
+                        { "before:scale-x-100": isEntryActive(entry) },
                       ]}
-                      aria-current={
-                        Astro.url.pathname === entry.url ? "page" : undefined
-                      }
+                      aria-current={isEntryActive(entry) ? "page" : undefined}
                     >
                       {entry.key}
                     </a>
@@ -100,7 +112,7 @@ const props = Astro.props as Props;
                       aria-controls={`submenu-${entry.key}`}
                       class:list={[
                         "submenu-btn absolute top-1/2 right-0 z-10 block h-full -translate-y-1/2 rounded-full rounded-tl-none rounded-bl-none bg-accent px-1 py-1 text-accent-foreground transition-colors hover:bg-orange-100 lg:hidden",
-                        { "cs-active": Astro.url.pathname.includes(entry.url) },
+                        { "cs-active": isEntryActive(entry) },
                       ]}
                     >
                       <span class="down-icon">
@@ -120,12 +132,12 @@ const props = Astro.props as Props;
                       "before:absolute before:bottom-0.5 before:left-0 before:block before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-accent before:opacity-100 before:transition-transform before:duration-300",
                       "hover:before:scale-x-100",
                       {
-                        "cs-active bg-orange-200 text-gray-50":
-                          Astro.url.pathname === entry.url,
+                        "before:scale-x-100":
+                          currentPath === normalize(entry.url),
                       },
                     ]}
                     aria-current={
-                      Astro.url.pathname === entry.url ? "page" : undefined
+                      currentPath === normalize(entry.url) ? "page" : undefined
                     }
                   >
                     {entry.key}
@@ -149,9 +161,13 @@ const props = Astro.props as Props;
                           class:list={[
                             "cs-li-link cs-drop-link font-roboto text-sm leading-tight whitespace-nowrap text-accent-foreground transition-colors",
                             "hover:bg-primary-foreground lg:box-border lg:block lg:w-full lg:p-3 lg:text-base lg:leading-normal lg:text-primary-foreground lg:duration-500 lg:hover:text-primary",
+                            {
+                              "bg-primary-foreground text-accent!":
+                                currentPath === normalize(child.url),
+                            },
                           ]}
                           aria-current={
-                            Astro.url.pathname === child.url
+                            currentPath === normalize(child.url)
                               ? "page"
                               : undefined
                           }
