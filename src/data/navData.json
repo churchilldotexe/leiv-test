@@ -31,6 +31,14 @@
       {
         "key": "Real Estate Assistant",
         "url": "/services/estate"
+      },
+      {
+        "key": "Life Insurance Licensing Coordinator",
+        "url": "/services/licensing"
+      },
+      {
+        "key": "Life Insurance Executive Assistant",
+        "url": "/services/insurance"
       }
     ]
   },
