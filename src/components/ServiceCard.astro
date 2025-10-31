@@ -1,11 +1,18 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-type Props = HTMLAttributes<"div">;
+type Props = HTMLAttributes<"div"> & {
+  contentClass?: string;
+};
 // px-30
-const { class: className, ...rest } = Astro.props as Props;
+const { class: className, contentClass, ...rest } = Astro.props as Props;
 const baseClass =
   "bg-[#ebebeb] bg-shadow-rounded w-fit rounded-[28px] py-11.25";
 const classes = [baseClass, className].filter(Boolean).join(" ");
+
+const contentBaseClass = "mx-auto flex items-center justify-center";
+const contentClasses = [contentBaseClass, contentClass]
+  .filter(Boolean)
+  .join(" ");
 ---
 
 <div class={classes} {...rest}>
@@ -16,7 +23,7 @@ const classes = [baseClass, className].filter(Boolean).join(" ");
   </h1>
 
   <!-- Inner card -->
-  <div class="mx-auto flex items-center justify-center">
+  <div class={contentClasses}>
     <!-- <Image src={src} alt={alt} /> -->
     <slot name="content" />
   </div>
