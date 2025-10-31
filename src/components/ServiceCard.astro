@@ -3,7 +3,8 @@ import type { HTMLAttributes } from "astro/types";
 type Props = HTMLAttributes<"div">;
 // px-30
 const { class: className, ...rest } = Astro.props as Props;
-const baseClass = "bg-shadow-rounded w-fit rounded-[28px] py-11.25";
+const baseClass =
+  "bg-[#ebebeb] bg-shadow-rounded w-fit rounded-[28px] py-11.25";
 const classes = [baseClass, className].filter(Boolean).join(" ");
 ---
 
@@ -52,7 +53,7 @@ const classes = [baseClass, className].filter(Boolean).join(" ");
 
   .bg-shadow-rounded {
     /* background: rgba(25, 25, 25, 0.08); */
-    background: rgba(25, 25, 25, 0.08);
+    /* background: rgba(25, 25, 25, 0.08); */
     box-shadow: 0px 4px 80px 5px rgba(18, 18, 18, 0.25);
     border-radius: 40px;
   }
