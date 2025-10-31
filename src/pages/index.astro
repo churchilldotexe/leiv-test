@@ -135,16 +135,10 @@ const serviceCards: ServiceCard[] = [
       </div>
     </div>
 
-    <!-- class:list={"absolute top-1/2 w-full -translate-y-1/2 object-cover lg:inset-0 lg:translate-0"} -->
-    <Picture
+    <Image
       src={heroBg}
-      style={heroBlurStyle}
-      class:list={"absolute top-0 left-0 w-full object-cover lg:-top-30 xl:-top-45 2xl:-top-100"}
-      formats={["avif", "webp"]}
-      alt="blurred circle side by side"
-      pictureAttributes={{
-        class: "h-full w-full block absolute top-0 left-0 -z-2",
-      }}
+      alt={"blur for bg"}
+      class={"absolute inset-0 w-full h-full -z-1  "}
     />
   </section>
 
