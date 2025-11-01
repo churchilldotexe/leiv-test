@@ -9,30 +9,11 @@ import expLogoBlur from "@assets/images/client-logos/exp-logo-blur.png";
 import kwLogo from "@assets/images/client-logos/kw-logo.png";
 import kwLogoBlur from "@assets/images/client-logos/kw-logo-blur.png";
 import goddessLoft from "@assets/images/client-logos/goddess-loft.svg";
-import i2lLogo from "@assets/images/client-logos/l2l-logo.avif";
-import i2lLogoBlur from "@assets/images/client-logos/l2l-logo-blur.avif";
-import ligLogo from "@assets/images/client-logos/lig-logo.webp";
-import ligLogoBlur from "@assets/images/client-logos/lig-logo-blur.webp";
-import lihvLogo from "@assets/images/client-logos/lihv-logo.jpg";
-import lihvLogoBlur from "@assets/images/client-logos/lihv-logo-blur.jpg";
-import mattLovit from "@assets/images/client-logos/matt-lovit.png";
-import mattLovitBlur from "@assets/images/client-logos/matt-lovit-blur.png";
-import mulalisaLogo from "@assets/images/client-logos/mulalisa-logo.png";
-import mulalisaLogoBlur from "@assets/images/client-logos/mulalisa-logo-blur.png";
-import obmspirationLogo from "@assets/images/client-logos/obmspiration-logo.png";
-import obmspirationLogoBlur from "@assets/images/client-logos/obmspiration-logo-blur.png";
 import riseupLogo from "@assets/images/client-logos/riseup-logo.jpg";
 import riseupLogoBlur from "@assets/images/client-logos/riseup-logo-blur.jpg";
 import roneLogo from "@assets/images/client-logos/rone-logo.avif";
 import roneLogoBlur from "@assets/images/client-logos/rone-logo-blur.avif";
-import shawnFrench from "@assets/images/client-logos/shawn-french.png";
-import shawnFrenchBlur from "@assets/images/client-logos/shawn-french-blur.png";
-import snobPug from "@assets/images/client-logos/snob-pug.png";
-import snobPugBlur from "@assets/images/client-logos/snob-pug-blur.png";
-import tds from "@assets/images/client-logos/tds.png";
-import tdsBlur from "@assets/images/client-logos/tds-blur.png";
-import treethebarberLogo from "@assets/images/client-logos/treethebarber-logo.jpg";
-import treethebarberLogoBlur from "@assets/images/client-logos/treethebarber-logo-blur.jpg";
+import OptimizedImage from "./OptimizedImage.astro";
 
 export interface Card {
   src: ImageMetadata;
@@ -121,14 +102,18 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
   },
 ];
 
+interface Props {
+  className?: string
+}
+const { className = "" } = Astro.props;
 ---
 
-<section class="z-1 bg-background relative overflow-hidden ">
-  <div class="relative flex items-center animate-pause-hover-parent w-full min-h-[28.56rem] mask-bg-3  scrollbar-hide pt-12 pb-32 md:pt-16 lg:py-32 ">
+<article class:list={["z-1 bg-background relative overflow-y-clip ", className]}>
+  <div class="relative flex items-center flex-col min-h-[28.56rem] overflow-x-visible animate-pause-hover-parent scrollbar-hide w-fit">
 
     {[...Array(2)].map((_,i)=>(
 
-    <div class="grid grid-rows-1 gap-16 pr-16 animate-move-to-left " style={`grid-template-columns:repeat(${clientCards.length},1fr)`} >
+    <div class:list={[`grid grid-cols-1 gap-8 items-center pb-8 animate-move-to-top `]} style={`grid-template-rows:repeat(${clientCards.length},1fr)`} >
       {
         clientCards.map((logo, index) => {
           const blurStyle = getBlurStyle(logo.blurSrc.src);
@@ -137,23 +122,21 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
           return (
             <div
               class:list={[
-                " shrink-0  w-[min(100dvw,39.75rem)] sm:min-w-159 md:w-[min(90vw,39.75rem)]",
-                isStaggered && "mt-50",
+                " w-[min(100dvw,39.75rem)] h-full sm:min-w-159 md:w-[min(90vw,39.75rem)]",
               ]}
             >
-{/* h-53.5  */}
               <div
-                class="relative flex h-fit w-full flex-col rounded-secondary bg-[#19191914] py-12.5 px-4 xs:px-14.5  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
+                class="relative flex h-full w-full flex-col rounded-secondary bg-[#ebebeb]  py-7.5 px-4 xs:px-14  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
               >
 
                 <!-- style={blurStyle} -->
                 {/* Logo & Rating */}
-                <div class="mb-8 flex items-start justify-between gap-4">
-                  <Image
-                    class="h-12 sm:h-15.5 w-auto object-contain "
+                <div class="mb-5 flex items-start justify-between gap-4">
+                  <OptimizedImage
+                    class:list="h-12 sm:h-15.5 w-auto object-contain"
                     src={logo.src}
                     alt={logo.alt}
-                    loading="lazy"
+                      blurSrc={logo.blurSrc.src}
                   />
 
                   {/* Star Rating */}
@@ -176,7 +159,7 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
                 </div>
 
                 {/* Testimonial */}
-                <p class="text-[clamp(1rem,3vw,1.19rem)] mb-5.5 leading-[130%] font-inter tracking-normal font-normal text-balck ">
+                <p class="text-[clamp(0.8rem,3vw,1rem)] mb-5.5 leading-[130%] font-inter tracking-normal font-normal text-balck flex-1">
                   {logo.testimonial}
                 </p>
 
@@ -191,5 +174,7 @@ working with Leiva Assistants has made that so much easier. I really appreciate 
     </div>
     ))}
   </div>
-</section>
+</article>
 
+<style>
+</style>

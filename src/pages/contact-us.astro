@@ -14,18 +14,28 @@ import s3Bg from "@assets/images/bg/section-bg-3.png";
 import heroBg from "@assets/images/bg/hero-bg.png";
 import reservation from "@assets/images/reservation.png";
 import reservationBlur from "@assets/images/reservation-blur.png";
+import VerticalTestimonial from "@components/VerticalTestimonial.astro";
+import OptimizedImage from "@components/OptimizedImage.astro";
 ---
 
 <Layout preloadedImage={s3Bg}>
-  <section
-    id="main-services"
-    class="relative z-1 overflow-clip px-4 py-section pb-20"
-  >
+  <section id="main-services" class="relative overflow-clip py-section pb-20">
     <div
-      class="mx-auto flex w-full max-w-176 flex-col gap-[clamp(2rem,4vw,3rem)] md:max-w-7xl"
+      class="relative mx-auto flex w-full flex-col gap-[clamp(2rem,4vw,3rem)]"
     >
-      <div>
-        <Image src={reservation} alt={"reservation form but image"} />
+      <div
+        class="mask-bg-3-vertical grid grid-cols-[1.2fr_.8fr] gap-9.5 lg:max-h-240.25"
+      >
+        <div class="flex max-h-[inherit] items-center justify-center pl-10">
+          <OptimizedImage
+            blurSrc={reservationBlur.src}
+            src={reservation}
+            alt={"reservation form but image"}
+          />
+        </div>
+        <div>
+          <VerticalTestimonial className="pr-10" />
+        </div>
       </div>
     </div>
 
