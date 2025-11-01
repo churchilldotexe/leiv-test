@@ -16,6 +16,8 @@ import reservation from "@assets/images/reservation.png";
 import reservationBlur from "@assets/images/reservation-blur.png";
 import VerticalTestimonial from "@components/VerticalTestimonial.astro";
 import OptimizedImage from "@components/OptimizedImage.astro";
+import ImageWithBlur from "@components/ImageWithBlur.astro";
+import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
 ---
 
 <Layout preloadedImage={s3Bg}>
@@ -24,17 +26,24 @@ import OptimizedImage from "@components/OptimizedImage.astro";
       class="relative mx-auto flex w-full flex-col gap-[clamp(2rem,4vw,3rem)]"
     >
       <div
-        class="mask-bg-3-vertical grid grid-cols-[1.2fr_.8fr] gap-9.5 lg:max-h-240.25"
+        class="mask-bg-3-vertical grid w-full grid-rows-[1fr,1fr] gap-9.5 lg:max-h-240.25 lg:grid-cols-[1fr_.5fr]"
       >
-        <div class="flex max-h-[inherit] items-center justify-center pl-10">
-          <OptimizedImage
+        <div
+          class="flex max-h-[inherit] max-w-200 items-center justify-center pt-10 lg:max-w-295 lg:pt-0 lg:pl-10"
+        >
+          <ImageWithBlur
             blurSrc={reservationBlur.src}
             src={reservation}
             alt={"reservation form but image"}
           />
         </div>
         <div>
-          <VerticalTestimonial className="pr-10" />
+          <div class="hidden lg:contents">
+            <VerticalTestimonial className="pr-10" />
+          </div>
+          <div class="contents lg:hidden">
+            <TestimonialsCarousel />
+          </div>
         </div>
       </div>
     </div>

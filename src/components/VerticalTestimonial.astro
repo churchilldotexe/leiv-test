@@ -14,6 +14,7 @@ import riseupLogoBlur from "@assets/images/client-logos/riseup-logo-blur.jpg";
 import roneLogo from "@assets/images/client-logos/rone-logo.avif";
 import roneLogoBlur from "@assets/images/client-logos/rone-logo-blur.avif";
 import OptimizedImage from "./OptimizedImage.astro";
+import ImageWithBlur from "./ImageWithBlur.astro";
 
 export interface Card {
   src: ImageMetadata;
@@ -108,7 +109,7 @@ interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<article class:list={["z-1 bg-background relative overflow-y-clip ", className]}>
+<article class:list={["z-1 bg-background relative overflow-y-clip @container", className]}>
   <div class="relative flex items-center flex-col min-h-[28.56rem] overflow-x-visible animate-pause-hover-parent scrollbar-hide w-fit">
 
     {[...Array(2)].map((_,i)=>(
@@ -119,21 +120,22 @@ const { className = "" } = Astro.props;
           const blurStyle = getBlurStyle(logo.blurSrc.src);
           const isStaggered = index % 2 === 1;
 
+                // " w-[clamp(29rem,100dvw,39.75rem)] h-full sm:min-w-159 md:w-[clamp(29rem,50dvw,39.75rem)]",
           return (
             <div
               class:list={[
-                " w-[min(100dvw,39.75rem)] h-full sm:min-w-159 md:w-[min(90vw,39.75rem)]",
+                "@sm:max-w-91.5 @md:max-w-105",
               ]}
             >
               <div
-                class="relative flex h-full w-full flex-col rounded-secondary bg-[#ebebeb]  py-7.5 px-4 xs:px-14  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
+                class="relative flex h-full w-full flex-col rounded-secondary bg-[#ebebeb]  py-7.5 px-8 @md:px-14  shadow-[0px_4px_100px_10px_#2C2B2C63_inset,0px_4px_70px_0px_#E329B073] backdrop-blur-sm "
               >
 
                 <!-- style={blurStyle} -->
                 {/* Logo & Rating */}
-                <div class="mb-5 flex items-start justify-between gap-4">
-                  <OptimizedImage
-                    class:list="h-12 sm:h-15.5 w-auto object-contain"
+                <div class="mb-5 flex @md:flex-row flex-col items-start justify-between gap-4">
+                  <ImageWithBlur
+                    class:list="h-12 @lg:h-15.5 w-auto object-contain"
                     src={logo.src}
                     alt={logo.alt}
                       blurSrc={logo.blurSrc.src}
@@ -144,7 +146,7 @@ const { className = "" } = Astro.props;
                     {Array.from({ length: 5 }, (_, i) => (
                       <svg
                         class:list={[
-                          "w-7.5 h-6.5",
+                          "w-6 h-5 @md:w-7.5 @md:h-6.5",
                           i < logo.rating
                             ? "fill-[#FFA500] text-[#FFA500]"
                             : "fill-gray-300 text-gray-300",
