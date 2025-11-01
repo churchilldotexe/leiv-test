@@ -12,7 +12,7 @@ import clientData from "@data/client.json";
   class="bg-primary px-4 py-[clamp(3.75rem,7.82vw,6.25rem)]"
 >
   <div
-    class="cs-container mx-auto flex w-full max-w-137.5 flex-wrap items-start justify-start gap-x-[clamp(4.25rem,10%,6.25rem)] md:max-w-7xl md:gap-y-0"
+    class="cs-container mx-auto flex w-full max-w-137.5 flex-wrap items-start justify-start gap-x-[clamp(4.25rem,10%,6.25rem)] md:max-w-5xl md:gap-y-0 md:px-6 lg:max-w-7xl"
   >
     <!-- Logo Group -->
     <div class="cs-logo-group relative w-full md:mr-auto md:w-auto">
@@ -68,46 +68,18 @@ import clientData from "@data/client.json";
           Sitemap
         </span>
       </li>
-      <li class="cs-nav-li mb-2 list-none leading-[1.5] last:mb-0">
-        <a
-          class="cs-nav-link relative text-base leading-[1.5] text-white no-underline"
-          href=""
-        >
-          Home
-        </a>
-      </li>
-      <li class="cs-nav-li mb-2 list-none leading-[1.5] last:mb-0">
-        <a
-          class="cs-nav-link relative text-base leading-[1.5] text-white no-underline"
-          href=""
-        >
-          About
-        </a>
-      </li>
-      <li class="cs-nav-li mb-2 list-none leading-[1.5] last:mb-0">
-        <a
-          class="cs-nav-link relative text-base leading-[1.5] text-white no-underline"
-          href=""
-        >
-          Services
-        </a>
-      </li>
-      <li class="cs-nav-li mb-2 list-none leading-[1.5] last:mb-0">
-        <a
-          class="cs-nav-link relative text-base leading-[1.5] text-white no-underline"
-          href=""
-        >
-          Portfolio
-        </a>
-      </li>
-      <li class="cs-nav-li mb-2 list-none leading-[1.5] last:mb-0">
-        <a
-          class="cs-nav-link relative text-base leading-[1.5] text-white no-underline"
-          href=""
-        >
-          Contact
-        </a>
-      </li>
+      {
+        navData.map((item) => (
+          <li class="cs-nav-li mb-2 list-none leading-[1.5] last:mb-0">
+            <a
+              class="cs-nav-link relative text-base leading-[1.5] text-white no-underline before:bg-accent!"
+              href={item.url}
+            >
+              {item.key}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <!-- Contact Info -->
@@ -124,17 +96,17 @@ import clientData from "@data/client.json";
       <li class="cs-contact-li mb-0 list-none last:mb-0">
         <a
           class="cs-contact-link inline-block text-left text-base leading-[1.5] text-white no-underline hover:underline"
-          href="tel: 123-456-7890"
+          href={"tel:" + clientData.phoneForTel}
         >
-          (123) 456-7890
+          {clientData.phoneFormatted}
         </a>
       </li>
       <li class="cs-contact-li mb-0 list-none last:mb-0">
         <a
           class="cs-contact-link inline-block text-left text-base leading-[1.5] text-white no-underline hover:underline"
-          href="mailto:info@codestitch.com"
+          href={"mailto:" + clientData.email}
         >
-          info@codestitch.com
+          {clientData.email}
         </a>
       </li>
 
@@ -153,21 +125,21 @@ import clientData from "@data/client.json";
           </a>
           <a
             class="cs-social-link relative z-[1] flex h-6 w-6 items-center justify-center rounded-full bg-[#4e4b66] transition-all duration-300"
-            aria-label="visit facebook profile"
-            href=""
+            aria-label="visit instagram profile"
+            href={clientData.instagram}
           >
             <Icon
-              name="tabler:brand-facebook-filled"
+              name="tabler:brand-instagram-filled"
               class="cs-social-img block h-3.25 w-auto"
             />
           </a>
           <a
             class="cs-social-link relative z-[1] flex h-6 w-6 items-center justify-center rounded-full bg-[#4e4b66] transition-all duration-300"
-            aria-label="visit instagram profile"
-            href=""
+            aria-label="visit linkedin profile"
+            href={clientData.linkedin}
           >
             <Icon
-              name="tabler:brand-instagram-filled"
+              name="tabler:brand-linkedin"
               class="cs-social-img block h-3.25 w-auto"
             />
           </a>
