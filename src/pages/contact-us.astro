@@ -26,10 +26,10 @@ import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
       class="relative mx-auto flex w-full flex-col gap-[clamp(2rem,4vw,3rem)]"
     >
       <div
-        class="mask-bg-3-vertical grid w-full grid-rows-[1fr,1fr] gap-9.5 lg:max-h-240.25 lg:grid-cols-[1fr_.5fr]"
+        class="mask-bg-3-vertical flex w-full flex-col gap-9.5 lg:max-h-240.25 lg:flex-row lg:gap-11"
       >
         <div
-          class="flex max-h-[inherit] max-w-200 items-center justify-center pt-10 lg:max-w-295 lg:pt-0 lg:pl-10"
+          class="flex max-h-[inherit] flex-1 items-center justify-center px-4 pt-10 lg:max-w-[70%] lg:pt-0 lg:pr-0 lg:pl-10"
         >
           <ImageWithBlur
             blurSrc={reservationBlur.src}
@@ -37,7 +37,7 @@ import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
             alt={"reservation form but image"}
           />
         </div>
-        <div>
+        <div class="lg:max-w-[30%] lg:flex-1">
           <div class="hidden lg:contents">
             <VerticalTestimonial className="pr-10" />
           </div>
