@@ -63,11 +63,14 @@ const props = Astro.props as Props;
         aria-label="Toggle mobile menu."
       >
         <div class="cs-box relative h-3.5 w-6" aria-hidden="true">
-          <span class="cs-line cs-line1 absolute left-1/2 -translate-x-1/2"
+          <span
+            class="cs-line cs-line1 absolute left-1/2 -translate-x-1/2 bg-primary-foreground!"
           ></span>
-          <span class="cs-line cs-line2 absolute left-1/2 -translate-x-1/2"
+          <span
+            class="cs-line cs-line2 absolute left-1/2 -translate-x-1/2 bg-primary-foreground!"
           ></span>
-          <span class="cs-line cs-line3 absolute left-1/2 -translate-x-1/2"
+          <span
+            class="cs-line cs-line3 absolute left-1/2 -translate-x-1/2 bg-primary-foreground!"
           ></span>
         </div>
       </button>
@@ -187,7 +190,7 @@ const props = Astro.props as Props;
       <a
         href="/contact-us"
         class:list={[
-          "relative inline-block w-full max-w-[172px] overflow-clip rounded-lg bg-primary px-2 py-[18px] text-center font-roboto text-sm leading-tight font-bold whitespace-nowrap text-accent-foreground uppercase no-underline transition-colors md:text-base lg:ml-8",
+          "o relative inline-block w-full overflow-clip rounded-lg bg-primary px-4 py-[18px] text-center font-roboto text-xs leading-tight font-bold whitespace-nowrap text-accent-foreground uppercase no-underline transition-colors xs:px-6 xs:text-sm sm:max-w-[172px] md:text-base lg:ml-8",
           "before:absolute before:inset-0 before:bg-accent before:transition-transform before:duration-300 before:ease-out hover:before:translate-x-[105%]",
           "lg:px-8",
         ]}

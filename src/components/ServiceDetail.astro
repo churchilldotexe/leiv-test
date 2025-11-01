@@ -7,9 +7,10 @@ import HireBtn from "./HireBtn.astro";
 import type { ComponentProps } from "astro/types";
 interface Props {
   title: string;
+  showTopper?: boolean;
 }
 
-const { title } = Astro.props as Props;
+const { title, showTopper = true } = Astro.props as Props;
 ---
 
 <section id="main-services" class="relative z-1 overflow-clip px-4 py-section">
@@ -17,11 +18,13 @@ const { title } = Astro.props as Props;
     class="mx-auto flex w-full max-w-176 flex-col gap-[clamp(2rem,4vw,3rem)] md:max-w-7xl"
   >
     <div class="max-w-367.75">
-      <span
-        class="mb-6 block text-center font-roboto text-base leading-h font-bold tracking-widest text-accent uppercase"
-      >
-        Use case
-      </span>
+      {
+        showTopper && (
+          <span class="mb-6 block text-center font-roboto text-base leading-h font-bold tracking-widest text-accent uppercase">
+            Use case
+          </span>
+        )
+      }
 
       <!-- 3. Header with text gradient -->
       <h2
@@ -29,6 +32,7 @@ const { title } = Astro.props as Props;
       >
         {title}
       </h2>
+      <slot name="title" />
 
       <HireBtn />
     </div>
